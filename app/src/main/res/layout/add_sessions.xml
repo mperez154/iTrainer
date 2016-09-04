@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:gravity="center_vertical">
+              android:layout_height="match_parent"
+              android:gravity="center_vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="John Doe: New Sessions"
-        android:id="@+id/textView"
+        android:text="@string/add_sessions_header"
+        android:id="@+id/new_sessions_header"
         android:gravity="center"
         android:paddingTop="24dp"
         android:paddingBottom="24dp" />
@@ -21,17 +22,20 @@
         android:layout_margin="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Number of Sessions:"
-            android:id="@+id/textView3" />
+            android:text="@string/add_qty_sessions"
+            android:id="@+id/sessions_qty_add" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText4" android:layout_marginLeft="10dp"/>
+            android:id="@+id/sessions_add_texField"
+            android:hint="@string/add_sessions_hint"
+            android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -42,12 +46,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Sessions Completed: "
-            android:id="@+id/textView5" />
-        <EditText
+            android:text="@string/previous_sessions"
+            android:id="@+id/previous_sessions_label" />
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText6" android:layout_marginLeft="10dp"
+            android:id="@+id/previous_session_count"
+            android:layout_marginLeft="10dp"
             />
 
     </LinearLayout>
@@ -59,15 +64,15 @@
         android:layout_margin="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Total: "
-            android:id="@+id/textView7" />
-        <EditText
+            android:text="@string/total_sessions"
+            android:id="@+id/total_sessions_label" />
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText8"
+            android:id="@+id/total_sessions_textField"
             android:layout_marginLeft="10dp"
         />
 
@@ -81,9 +86,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
-            android:id="@+id/button1"
-            android:layout_gravity="center_horizontal" />
+            android:text="@string/add_button"
+            android:id="@+id/add_button"
+            android:layout_gravity="center_horizontal" android:layout_marginTop="30dp"/>
     </LinearLayout>
 
 
