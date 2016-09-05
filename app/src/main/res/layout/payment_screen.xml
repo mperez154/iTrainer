@@ -9,8 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="John Doe: Payment"
-        android:id="@+id/textView20"
+        android:text="@string/payment_screen_header"
+        android:id="@+id/payment_screen_header"
         android:layout_gravity="center_horizontal"
         android:layout_margin="24dp"/>
     <LinearLayout
@@ -25,67 +25,67 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Number of Sessions"
-                android:id="@+id/textView10"/>
+                android:text="@string/number_of_sessions"
+                android:id="@+id/number_of_sessions"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText3"
-                android:hint="enter # here..."/>
+                android:id="@+id/new_session_count"
+                android:hint="@string/new_session_count_hint"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Address"
-                android:id="@+id/textView11"
+                android:text="@string/address"
+                android:id="@+id/address_label"
                 android:layout_marginTop="10dp"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
                 android:ems="10"
-                android:id="@+id/editText5"
-                android:text="123 Main Street"
+                android:id="@+id/address_textField"
+                android:text="@string/address_field"
                 android:layout_weight="0.13"
                 android:gravity="top"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Phone"
-                android:id="@+id/textView12"
+                android:text="@string/phone_label"
+                android:id="@+id/phone_label"
                 android:layout_marginTop="10dp"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/editText7"
-                android:text="813-555-5555"/>
+                android:id="@+id/phone_textField"
+                android:text="@string/phone_textField"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Credit Card"
-                android:id="@+id/textView13"
+                android:text="@string/cc_label"
+                android:id="@+id/cc_info_label"
                 android:layout_marginTop="10dp"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText9"
-                android:text="4120 1234 5678 9012"/>
+                android:id="@+id/cc_textField"
+                android:text="@string/cc_text"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Exp Date"
-                android:id="@+id/textView14"
+                android:text="@string/exp_date_label"
+                android:id="@+id/exp_date_label"
                 android:layout_marginTop="10dp"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText10"
-                android:text="08/18"/>
+                android:id="@+id/exp_date_textField"
+                android:text="@string/exp_date"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -95,14 +95,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/personal_trainer"
-                android:id="@+id/imageView"
+                android:id="@+id/picture_id"
                 android:layout_gravity="top"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Total: $199.99"
-                android:id="@+id/textView15"
+                android:text="@string/total_price_sig_screen"
+                android:id="@+id/total_price_payment_screen"
                 android:gravity="center_horizontal"/>
         </LinearLayout>
     </LinearLayout>
@@ -114,16 +114,16 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
-            android:id="@+id/button4"
+            android:text="@string/edit_button"
+            android:id="@+id/edit_button"
             android:layout_marginLeft="24dp"
             android:layout_gravity="left|bottom"
             android:layout_marginRight="24dp"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
-            android:id="@+id/button5"
+            android:text="@string/submit_button"
+            android:id="@+id/submit_button_2"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="24dp"
             android:layout_marginLeft="24dp"/>
