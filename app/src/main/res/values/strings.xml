@@ -62,4 +62,6 @@
     <string name="num_sessions">Number of Sessions: 5</string>
     <string name="print_button">Print</string>
     <string name="email_button">eMail</string>
+
+    <string name="logged_in_note">Logged In:</string>
 </resources>
