@@ -11,5 +11,9 @@ public class PaymentScreen1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_screen);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.user_login_info, LoggedInFragment.newInstance())
+                .commit();
     }
 }

@@ -11,5 +11,9 @@ public class Receipt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.receipt);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.user_login_info, LoggedInFragment.newInstance())
+                .commit();
     }
 }

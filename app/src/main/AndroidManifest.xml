@@ -25,6 +25,34 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddCustomer1"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".AddSessions1"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".ClientList1"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".CustomerSignature1"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".PaymentScreen1"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".PreviousSessions"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".Receipt"
+            android:label="@string/app_name">
+        </activity>
     </application>
 
 </manifest>
