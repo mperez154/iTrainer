@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/personal_trainer"
+        android:layout_margin="10dp"
+        android:padding="2dp"/>
+
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:text="customer"
+        android:layout_toRightOf="@+id/img"
+        android:textSize="15dp"
+        android:id="@+id/c_name"
+        />
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:text="customer"
+        android:layout_toRightOf="@+id/c_name"
+        android:textSize="15dp"
+        android:id="@+id/userName"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/userName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="2dp"/>
+
+</RelativeLayout>

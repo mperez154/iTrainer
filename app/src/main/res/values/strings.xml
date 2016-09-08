@@ -62,6 +62,15 @@
     <string name="num_sessions">Number of Sessions: 5</string>
     <string name="print_button">Print</string>
     <string name="email_button">eMail</string>
-
     <string name="logged_in_note">Logged In:</string>
+
+    <string-array name="customer">
+        <item>"John Doe"</item>
+        <item>"Jane Doe"</item>
+    </string-array>
+
+    <string-array name="userName">
+        <item>"jdoe1"</item>
+        <item>"jdoe2"</item>
+    </string-array>
 </resources>
