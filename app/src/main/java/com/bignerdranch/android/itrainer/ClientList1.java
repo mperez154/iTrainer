@@ -16,7 +16,7 @@ public class ClientList1 extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
 
     String[] c_name, userName;
-    int[] img_res = {R.drawable.personal_trainer,R.drawable.personal_trainer};
+    int[] img_res = {R.drawable.user1,R.drawable.user2};
     ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
 
 

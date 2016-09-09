@@ -5,17 +5,20 @@ package com.bignerdranch.android.itrainer;
  */
 public class DataProvider {
 
-    public DataProvider(int img_res, String c_name, String userName)
-    {
-        this.setImg_res(img_res);
-        this.setC_name(c_name);
-        this.setUserName(userName);
-
-    }
-
+    //Create Variables for image, customer name and userName
     private int img_res;
     private String c_name, userName;
 
+    //constructor which has 3 arguments
+    public DataProvider(int img_res, String c_name, String userName)
+    {
+        //Use setter methods to set all variables, passed in via args
+        this.setImg_res(img_res);
+        this.setC_name(c_name);
+        this.setUserName(userName);
+    }
+
+    //Setters and Getters for all variables
     public void setImg_res(int img_res) {
         this.img_res = img_res;
     }

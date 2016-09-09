@@ -47,9 +47,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder
     {
+        //Declare variables of type ImageView and TextView
         ImageView imageView;
         TextView c_name, userName;
-
 
         public RecyclerViewHolder(View view)
         {
