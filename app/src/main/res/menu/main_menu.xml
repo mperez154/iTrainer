@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/settings_id"
+        android:title="Settings"
+        android:showAsAction="always"
+        android:icon="@drawable/personal_trainer"
+        />
+
+    <item
+        android:id="@+id/about_us_id"
+        android:title="About Us"
+          />
+
+    <item
+        android:id="@+id/logut"
+        android:title="Log Out"
+        />
+
+</menu>
+
+<!--android:showAsAction="always" to display "always" -->

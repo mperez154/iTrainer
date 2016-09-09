@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,14 @@ public class ClientList1 extends AppCompatActivity {
     String[] c_name, userName;
     int[] img_res = {R.drawable.user1,R.drawable.user2};
     ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
+
+    //This inflates main_menu.xml
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return  true;
+    }
 
 
     @Override
