@@ -119,18 +119,19 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/edit_button"
-            android:id="@+id/edit_button"
-            android:layout_marginLeft="24dp"
-            android:layout_gravity="left|bottom"
-            android:layout_marginRight="24dp"/>
+            android:text="@string/cancel"
+            android:id="@+id/cancel_paymentScreen"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submit_button"
-            android:id="@+id/submit_button_2"
+            android:text="@string/back_button"
+            android:id="@+id/back_paymentScreen"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnContinue"
+            android:id="@+id/btnContinue"
             android:layout_gravity="bottom|right"
-            android:layout_marginRight="24dp"
             android:layout_marginLeft="24dp"/>
     </LinearLayout>
 

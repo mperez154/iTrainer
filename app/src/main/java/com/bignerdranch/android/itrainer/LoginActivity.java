@@ -95,13 +95,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("jdoe");
+        String userName = (String) getText(R.string.user_name);
+        return email.contains(userName);
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.contains("welcome1");
+        String userPassword = (String) getText(R.string.password);
+        return password.contains(userPassword);
     }
 
 }

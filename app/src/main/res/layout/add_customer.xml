@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center_vertical">
+              android:gravity="top">
 
     <FrameLayout
         android:id="@+id/user_login_info"
@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/first_name"
-            android:id="@+id/f_name_label" android:layout_margin="10dp"/>
+            android:id="@+id/f_name_label"
+            android:layout_margin="10dp"/>
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -57,7 +58,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/l_name_textField"
-            android:hint="@string/last_name_hint" android:layout_marginRight="10dp"/>
+            android:hint="@string/last_name_hint"
+            android:layout_marginRight="10dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -78,20 +80,30 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:hint="@string/email_hint"
-            android:id="@+id/email_textField" android:layout_marginRight="10dp"/>
+            android:id="@+id/email_textField"
+            android:layout_marginRight="10dp"/>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" android:gravity="center"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/btnCancel_new_customer"
+        />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/save_button"
-            android:id="@+id/save_button"
-            android:layout_gravity="center_horizontal" android:layout_marginTop="20dp"/>
+            android:text="@string/next_button"
+            android:id="@+id/next_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
 
 </LinearLayout>

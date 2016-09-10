@@ -33,8 +33,9 @@
     <string name="all_customers">All Customers</string>
     <string name="back_button">Back</string>
     <string name="next_button">Next</string>
+    <string name="cancel">Cancel</string>
     <string name="signature_label">Signature</string>
-    <string name="signature_screen_sessions">Sessions: 5</string>
+    <string name="signature_screen_sessions">Sessions: 5,</string>
     <string name="total_price_sig_screen">Total: $199.99</string>
     <string name="submit_button">Submit</string>
     <string name="payment_screen_header">John Doe: Payment</string>
@@ -63,7 +64,9 @@
     <string name="print_button">Print</string>
     <string name="email_button">eMail</string>
     <string name="logged_in_note">Logged In:</string>
-    <string name="logOffMessage">Logging You Off</string>
+    <string name="logOff_Msg01">Logging You Off</string>
+    <string name="btnContinue">Continue</string>
+    <string name="home">Home</string>
 
     <string-array name="customer">
         <item>"John Doe"</item>
@@ -90,7 +93,6 @@
         <item>"bclinton"</item>
         <item>"bobama"</item>
         <item>"pbush"</item>
-
-
     </string-array>
+
 </resources>
