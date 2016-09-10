@@ -14,7 +14,7 @@
           />
 
     <item
-        android:id="@+id/logut"
+        android:id="@+id/logOut"
         android:title="Log Out"
         />
 

@@ -63,14 +63,34 @@
     <string name="print_button">Print</string>
     <string name="email_button">eMail</string>
     <string name="logged_in_note">Logged In:</string>
+    <string name="logOffMessage">Logging You Off</string>
 
     <string-array name="customer">
         <item>"John Doe"</item>
-        <item>"Jane Doe"</item>
+        <item>"Ronal Reagan"</item>
+        <item>"Richard Nixon"</item>
+        <item>"John Kennedy"</item>
+        <item>"Dwight Eisenhower"</item>
+        <item>"Jimmy Carter"</item>
+        <item>"Lyndon Johnson"</item>
+        <item>"Bill Clinton"</item>
+        <item>"Barack Obama"</item>
+        <item>"Papa Bush"</item>
+
     </string-array>
 
     <string-array name="userName">
         <item>"jdoe1"</item>
-        <item>"jdoe2"</item>
+        <item>"rreagan"</item>
+        <item>"rnixon"</item>
+        <item>"jkennedy"</item>
+        <item>"deisenhower"</item>
+        <item>"jcarter"</item>
+        <item>"ljohnson"</item>
+        <item>"bclinton"</item>
+        <item>"bobama"</item>
+        <item>"pbush"</item>
+
+
     </string-array>
 </resources>

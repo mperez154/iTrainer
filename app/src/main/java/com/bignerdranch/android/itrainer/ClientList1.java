@@ -1,11 +1,18 @@
 package com.bignerdranch.android.itrainer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,7 +25,9 @@ public class ClientList1 extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
 
     String[] c_name, userName;
-    int[] img_res = {R.drawable.user1,R.drawable.user2};
+    int[] img_res = {R.drawable.user1,R.drawable.user2, R.drawable.user3, R.drawable.user4,
+            R.drawable.user5, R.drawable.user6, R.drawable.user7, R.drawable.user8,
+            R.drawable.user9, R.drawable.user10};
     ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
 
     //This inflates main_menu.xml
@@ -27,6 +36,42 @@ public class ClientList1 extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+        if(id == R.id.logOut)
+        {
+            Toast toast= Toast.makeText(this, "Logging You Off", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
+
+            Intent intent = new Intent(ClientList1.this, LoginActivity.class );
+            startActivity(intent);
+        }
+        else if(id == R.id.settings_id)
+        {
+            Toast toast= Toast.makeText(this, "Logging You Off", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
+
+            Intent intent = new Intent(ClientList1.this, LoginActivity.class );
+            startActivity(intent);
+        }
+        else if (id == R.id.about_us_id)
+        {
+            Toast toast= Toast.makeText(this, "Logging You Off", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
+
+            Intent intent = new Intent(ClientList1.this, LoginActivity.class );
+            startActivity(intent);
+        }
+        return true;
+
+
     }
 
 

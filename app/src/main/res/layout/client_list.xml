@@ -25,10 +25,12 @@
         android:layout_height="wrap_content">
 
        <android.support.v7.widget.RecyclerView
-           android:layout_height="wrap_content"
+           android:layout_height="400dp"
            android:layout_width="match_parent"
            android:scrollbars="vertical"
            android:id="@+id/recyclerView"/>
+
+
 
     </LinearLayout>
     <LinearLayout
@@ -38,19 +40,24 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="center_horizontal">
+        <!--
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/back_button"
             android:id="@+id/back_button"
-            android:layout_gravity="left"
-            android:layout_marginRight="24dp"/>
+        />
+        -->
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/new_customer"
+            android:id="@+id/new_customer_button"
+        />
+        <!--
+        <Button
             android:text="@string/next_button"
             android:id="@+id/next_button"
-            android:layout_gravity="right"
-            android:layout_marginLeft="24dp"/>
+        />
+        -->
+
     </LinearLayout>
 </LinearLayout>
