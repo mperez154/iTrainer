@@ -12,12 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
+
 import java.util.ArrayList;
 
 /**
  * Created by mperez5 on 9/5/2016.
  */
 public class ClientList1 extends AppCompatActivity {
+
+    //Create instance of database
+    CustomerBaseHelper myDb;
+
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
@@ -28,6 +34,7 @@ public class ClientList1 extends AppCompatActivity {
             R.drawable.user5, R.drawable.user6, R.drawable.user7, R.drawable.user8,
             R.drawable.user9, R.drawable.user10};
     ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
+
 
     //This inflates main_menu.xml
     @Override
@@ -63,7 +70,6 @@ public class ClientList1 extends AppCompatActivity {
 
 
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +109,13 @@ public class ClientList1 extends AppCompatActivity {
 
             }
         });
+
+        //Initialize myDb
+        myDb = new CustomerBaseHelper(this);
     }
+
+
+
 
 
 }
