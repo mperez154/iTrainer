@@ -21,8 +21,7 @@ import java.util.ArrayList;
  */
 public class ClientList1 extends AppCompatActivity {
 
-    //Create instance of database
-    CustomerBaseHelper myDb;
+
 
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
@@ -115,7 +114,8 @@ public class ClientList1 extends AppCompatActivity {
     }
 
 
-
+    //Create instance of database
+    CustomerBaseHelper myDb;
 
 
 }

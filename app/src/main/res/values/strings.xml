@@ -67,6 +67,11 @@
     <string name="logOff_Msg01">Logging You Off</string>
     <string name="btnContinue">Continue</string>
     <string name="home">Home</string>
+    <string name="age">Age</string>
+    <string name="age_hint">Enter age...</string>
+    <string name="DOB">DOB</string>
+    <string name="start_weight">Start Weight</string>
+    <string name="target_weight">Target:</string>
 
     <string-array name="customer">
         <item>"John Doe"</item>

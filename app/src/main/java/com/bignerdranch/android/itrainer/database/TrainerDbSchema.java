@@ -16,7 +16,6 @@ public class TrainerDbSchema {
             public final static String DOB_YEAR = "DOB_Year";
             public final static String DOB_MONTH = "DOB_Month";
             public final static String DOB_DAY = "DOB_Day";
-            public final static String HEIGHT = "Height";
             public final static String START_WEIGHT = "Weight";
             public final static String DESIRED_WEIGHT = "Desired_Weight";
 
@@ -42,12 +41,12 @@ public class TrainerDbSchema {
 
         public final static class Cols {
             public final static String ID = "id";
-            public final static String ADDRESS_CITY = "F_Name";
-            public final static String ADDRESS_STREET = "L_Name";
-            public final static String ADDRESS_STATE = "age";
-            public final static String ADDRESS_ZIP = "DOB_Year";
-            public final static String CC_INFO = "DOB_Month";
-            public final static String EXP_DATE = "DOB_Day";
+            public final static String ADDRESS_CITY = "address_city";
+            public final static String ADDRESS_STREET = "address_street";
+            public final static String ADDRESS_STATE = "address_state";
+            public final static String ADDRESS_ZIP = "address_zip";
+            public final static String CC_INFO = "cc_info";
+            public final static String EXP_DATE = "EXP_DATE";
 
         }
     }
