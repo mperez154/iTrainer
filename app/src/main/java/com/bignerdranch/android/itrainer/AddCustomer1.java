@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -14,6 +17,10 @@ import android.widget.Button;
 public class AddCustomer1 extends AppCompatActivity {
     Button btnCancel;
     Button btnNext;
+
+
+    //Create instance of database
+    CustomerBaseHelper myDb;
 
     //This inflates main_menu.xml
     @Override
@@ -27,6 +34,16 @@ public class AddCustomer1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_customer);
+
+        //Initialize myDb
+        myDb = new CustomerBaseHelper(this);
+
+        final EditText f_name = (EditText)findViewById(R.id.f_name_tf);
+        final EditText l_name = (EditText)findViewById(R.id.l_name_tf);
+        final EditText dob_d = (EditText)findViewById(R.id.dob_d_tf);
+        final EditText dob_m = (EditText)findViewById(R.id.dob_m_tf);
+        final EditText dob_y = (EditText)findViewById(R.id.dob_y_tf);
+        final EditText unique_id = (EditText)findViewById(R.id.unique_id_tf);
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
@@ -47,11 +64,19 @@ public class AddCustomer1 extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+
                 Intent intent = new Intent(AddCustomer1.this, AddSessions1.class);
+                intent.putExtra("unique_id", unique_id.getText().toString());   //This will make the unique ID available in the next activity
+                intent.putExtra("f_name", f_name.getText().toString());
+                intent.putExtra("l_name", l_name.getText().toString());
+                intent.putExtra("dob_d", dob_d.getText().toString());
+                intent.putExtra("dob_m", dob_m.getText().toString());
+                intent.putExtra("dob_y", dob_y.getText().toString());
                 startActivity(intent);
             }
 
         });
+
 
     }
 

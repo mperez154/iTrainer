@@ -12,8 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
-
 import java.util.ArrayList;
 
 /**
@@ -108,14 +106,7 @@ public class ClientList1 extends AppCompatActivity {
 
             }
         });
-
-        //Initialize myDb
-        myDb = new CustomerBaseHelper(this);
     }
-
-
-    //Create instance of database
-    CustomerBaseHelper myDb;
 
 
 }

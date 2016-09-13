@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
                 android:ems="10"
-                android:id="@+id/address_textField"
+                android:id="@+id/address_tf"
                 android:text="@string/address_field"
                 android:layout_weight="0.13"
                 android:gravity="top"/>
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/phone_textField"
+                android:id="@+id/phone_tf"
                 android:text="@string/phone_textField"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cc_textField"
+                android:id="@+id/cc_tf"
                 android:text="@string/cc_text"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/exp_date_textField"
+                android:id="@+id/exp_date_tf"
                 android:text="@string/exp_date"/>
         </LinearLayout>
         <LinearLayout

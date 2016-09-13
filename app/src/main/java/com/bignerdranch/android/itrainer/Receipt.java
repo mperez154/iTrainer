@@ -1,6 +1,7 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -32,6 +33,24 @@ public class Receipt extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
+
+        //Carry over from last activity
+        Intent intent = getIntent();
+        final String unique_id = intent.getStringExtra("unique_id");
+        final String f_name = intent.getStringExtra("f_name");
+        final String l_name = intent.getStringExtra("l_name");
+        final String dob_d = intent.getStringExtra("dob_d");
+        final String dob_m = intent.getStringExtra("dob_m");
+        final String dob_y = intent.getStringExtra("dob_y");
+        final String num_sessions = intent.getStringExtra("num_sessions");
+        final String payment = intent.getStringExtra("total_price");
+        final String new_session_count = intent.getStringExtra("new_session_count");
+        final String address_tf = intent.getStringExtra("address_tf");
+        final String phone_tf = intent.getStringExtra("phone_tf");
+        final String cc_tf = intent.getStringExtra("cc_tf");
+        final String exp_date_tf = intent.getStringExtra("exp_date_tf");
+        final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
+
 
         btnPrint = (Button)findViewById(R.id.btnPrint);
         btnPrint.setOnClickListener(new View.OnClickListener(){

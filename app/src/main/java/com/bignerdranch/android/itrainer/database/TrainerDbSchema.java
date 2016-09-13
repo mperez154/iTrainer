@@ -10,28 +10,25 @@ public class TrainerDbSchema {
 
         public final static class Cols {
             public final static String ID = "id";
+            public final static String UNIQUE_ID = "unique_id";
             public final static String F_NAME = "F_Name";
             public final static String L_NAME = "L_Name";
-            public final static String AGE = "age";
             public final static String DOB_YEAR = "DOB_Year";
             public final static String DOB_MONTH = "DOB_Month";
             public final static String DOB_DAY = "DOB_Day";
-            public final static String START_WEIGHT = "Weight";
-            public final static String DESIRED_WEIGHT = "Desired_Weight";
 
         }
     }
 
-    //Table contaniing session information
+    //Table containing session information
     public final static class SessionsTable{
         public final static String NAME = "sessions";
 
         public final static class Cols {
             public final static String ID = "id";
-            public final static String DATE = "date";
-            public final static String TYPE = "type";
-            public final static String CURRENT_WEIGHT = "current_weight";
-            public final static String AMT_TO_TARGET = "amt_to_target";
+            public final static String UNIQUE_ID = "unique_id";
+            public final static String TOTAL_SESSIONS = "total_sessions";
+            public final static String SESSIONS_COMPLETED = "sessions_completed";
         }
     }
 
