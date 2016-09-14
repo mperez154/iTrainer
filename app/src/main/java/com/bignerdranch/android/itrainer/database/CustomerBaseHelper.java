@@ -13,7 +13,7 @@ import com.bignerdranch.android.itrainer.database.TrainerDbSchema.SessionsTable;
  * Created by Marco on 9/11/2016.
  */
 public class CustomerBaseHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 4;
+    private static final int VERSION = 1;
     private static final String DATABASE_NAME = "customers.db";
 
     public CustomerBaseHelper(Context context){
@@ -22,10 +22,10 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("create table " + CustomerTable.NAME + "(" + CustomerTable.Cols.ID + "INTEGER PRIMARY KEY AUTOINCRMENT," + CustomerTable.Cols.F_NAME + "TEXT ," + CustomerTable.Cols.L_NAME + " TEXT," + CustomerTable.Cols.DOB_DAY + "TEXT," + CustomerTable.Cols.DOB_YEAR + "TEXT," + CustomerTable.Cols.UNIQUE_ID + "TEXT," + CustomerTable.Cols.DOB_MONTH + "TEXT)");
-        db.execSQL("create table " + SessionsTable.NAME + "(" + SessionsTable.Cols.ID + "INTEGER PRIMARY KEY AUTOINCRMENT," + SessionsTable.Cols.UNIQUE_ID + "TEXT ," + SessionsTable.Cols.TOTAL_SESSIONS + " TEXT," + SessionsTable.Cols.SESSIONS_COMPLETED + "TEXT)");
-        db.execSQL("create table " + PaymentInfoTable.NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, ADDRESS_CITY TEXT, ADDRESS_STREET TEXT, ADDRESS_STATE TEXT, ADDRESS_ZIP INTEGER, CC_INFO STRING, EXP_DATE STRING)");
-    }
+        db.execSQL("create table " + CustomerTable.NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, F_NAME TEXT,L_NAME TEXT, DOB_DAY TEXT, DOB_YEAR TEXT, UNIQUE_ID TEXT, DOB_MONTH TEXT)");
+        db.execSQL("create table " + SessionsTable.NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, UNIQUE_ID TEXT, TOTAL_SESSIONS TEXT, SESSIONS_COMPLETED TEXT)");
+        db.execSQL("create table " + PaymentInfoTable.NAME + "( ID  INTEGER PRIMARY KEY AUTOINCREMENT, ADDRESS  TEXT, UNIQUE_ID  TEXT,PHONE TEXT, ADDED_SESSIONS TEXT, PRICE TEXT, CC_INFO TEXT, EXP_DATE TEXT)");
+}
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -57,7 +57,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
-    public boolean insertSessionsData(String unique_id, String type, String total_sessions, String sessions_completed)
+    public boolean insertSessionsData(String unique_id, String total_sessions, String sessions_completed)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -74,11 +74,29 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
+    public boolean insertOrderData(String unique_id, String address, String added_sessions, String price, String cc_info, String exp_date, String phone)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PaymentInfoTable.Cols.UNIQUE_ID, unique_id);
+        contentValues.put(PaymentInfoTable.Cols.ADDRESS, address);
+        contentValues.put(PaymentInfoTable.Cols.ADDED_SESSIONS, added_sessions);
+        contentValues.put(PaymentInfoTable.Cols.PRICE, price);
+        contentValues.put(PaymentInfoTable.Cols.CC_INFO, cc_info);
+        contentValues.put(PaymentInfoTable.Cols.EXP_DATE, exp_date);
+        contentValues.put(PaymentInfoTable.Cols.PHONE, phone);
+
+
+        long result = db.insert(PaymentInfoTable.NAME, null, contentValues);
+
+        if (result == -1)
+        {
+            return false;
+        }
+        else return true;
+    }
+
 }
-
-
-
-
 
 
 

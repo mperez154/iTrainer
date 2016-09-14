@@ -38,10 +38,11 @@ public class TrainerDbSchema {
 
         public final static class Cols {
             public final static String ID = "id";
-            public final static String ADDRESS_CITY = "address_city";
-            public final static String ADDRESS_STREET = "address_street";
-            public final static String ADDRESS_STATE = "address_state";
-            public final static String ADDRESS_ZIP = "address_zip";
+            public final static String UNIQUE_ID = "unique_id";
+            public final static String ADDRESS = "address";
+            public final static String ADDED_SESSIONS = "added_sessions";
+            public final static String PRICE = "price";
+            public final static String PHONE = "phone";
             public final static String CC_INFO = "cc_info";
             public final static String EXP_DATE = "EXP_DATE";
 

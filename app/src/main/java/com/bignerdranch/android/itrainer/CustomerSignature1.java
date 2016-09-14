@@ -63,9 +63,6 @@ public class CustomerSignature1 extends AppCompatActivity {
 
         final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
 
-
-
-
         btnBack = (Button)findViewById(R.id.btnBack_signatureScreen);
         btnBack.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -89,14 +86,29 @@ public class CustomerSignature1 extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                boolean isInserted = myDb.insertCustomerData(f_name, l_name,
-                        dob_y, dob_m, dob_d, unique_id);
-
+                boolean isInserted = myDb.insertCustomerData(f_name, l_name, dob_y, dob_m, dob_d, unique_id);
                 if(isInserted)
                 {
                     Toast.makeText(CustomerSignature1.this, "Customer added to database", Toast.LENGTH_SHORT).show();
                 }
                 else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD CUSTOMER", Toast.LENGTH_SHORT).show();
+
+
+                boolean sessionDataInserted = myDb.insertSessionsData(unique_id, new_session_count, "0");
+                if(sessionDataInserted)
+                {
+                    Toast.makeText(CustomerSignature1.this, "Session data added to database", Toast.LENGTH_SHORT).show();
+                }
+                else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD SESSIONS", Toast.LENGTH_SHORT).show();
+
+
+                boolean orderDataInserted = myDb.insertOrderData(unique_id, address_tf, new_session_count, payment, cc_tf, exp_date_tf, phone_tf);
+                if(orderDataInserted)
+                {
+                    Toast.makeText(CustomerSignature1.this, "Order added to database", Toast.LENGTH_SHORT).show();
+                }
+                else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD ORDER", Toast.LENGTH_SHORT).show();
+
 
                 Intent intent = new Intent(CustomerSignature1.this, Receipt.class);
                 intent.putExtra("unique_id", unique_id);   //This will make the unique ID available in the next activity
