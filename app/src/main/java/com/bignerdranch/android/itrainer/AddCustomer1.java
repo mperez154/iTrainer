@@ -10,8 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
+import java.util.Date;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -19,10 +18,8 @@ import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 public class AddCustomer1 extends AppCompatActivity {
     Button btnCancel;
     Button btnNext;
+    Long uniqueID = (new Date().getTime())/100000;    //Get the current time() and divides by 100,000 to create 8 digit unique ID
 
-
-    //Create instance of database
-    CustomerBaseHelper myDb;
 
     //This inflates main_menu.xml
     @Override
@@ -64,15 +61,14 @@ public class AddCustomer1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_customer);
 
-        //Initialize myDb
-        myDb = new CustomerBaseHelper(this);
-
         final EditText f_name = (EditText)findViewById(R.id.f_name_tf);
         final EditText l_name = (EditText)findViewById(R.id.l_name_tf);
         final EditText dob_d = (EditText)findViewById(R.id.dob_d_tf);
         final EditText dob_m = (EditText)findViewById(R.id.dob_m_tf);
         final EditText dob_y = (EditText)findViewById(R.id.dob_y_tf);
         final EditText unique_id = (EditText)findViewById(R.id.unique_id_tf);
+
+        unique_id.setText(uniqueID.toString()); //Sets this field using the uniqueID variable created above
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())

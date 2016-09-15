@@ -2,6 +2,7 @@ package com.bignerdranch.android.itrainer.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -94,6 +95,15 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
             return false;
         }
         else return true;
+    }
+
+    //Used to retrieve all data
+    public Cursor getAllCustomerData()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("select * from " + CustomerTable.NAME , null );
+        return result;
+
     }
 
 }

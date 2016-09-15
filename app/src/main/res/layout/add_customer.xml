@@ -118,9 +118,8 @@
             android:layout_margin="10dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/id_hint"
             android:id="@+id/unique_id_tf"
             android:layout_marginRight="10dp"
             android:layout_gravity="bottom" />

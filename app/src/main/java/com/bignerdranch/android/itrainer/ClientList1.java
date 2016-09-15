@@ -1,6 +1,7 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
+
 import java.util.ArrayList;
 
 /**
@@ -19,7 +22,8 @@ import java.util.ArrayList;
  */
 public class ClientList1 extends AppCompatActivity {
 
-
+    //Create instance of database
+    CustomerBaseHelper myDb;
 
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
@@ -68,10 +72,57 @@ public class ClientList1 extends AppCompatActivity {
 
     }
 
+    public void viewAll()
+    {
+        Cursor result = myDb.getAllCustomerData();
+        if(result.getCount() == 0)
+        {
+            //showMessage("Error", "Nothing Found");
+            return;
+        }
+
+        //Toast.makeText(ClientList1.this, result.getString(0), Toast.LENGTH_LONG).show();
+
+
+
+        /*
+        StringBuffer buffer = new StringBuffer();
+        while(result.moveToNext())
+        {
+            buffer.append("System ID: " + result.getString(0) + "\n");
+            buffer.append("First Name: " + result.getString(1) + "\n");
+            buffer.append("Last Name: " + result.getString(2) + "\n");
+            buffer.append("Birth Day: " + result.getString(3) + "\n");
+            buffer.append("Year: " + result.getString(4) + "\n\n");
+            buffer.append("Month: " + result.getString(5) + "\n\n");
+            buffer.append("Unique ID: " + result.getString(6) + "\n\n");
+        }
+
+        //show all data
+        showMessage("Data", buffer.toString());
+        */
+    }
+    /*
+
+    public void showMessage(String title, String msg)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.show();
+    }
+    */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_list);
+
+        //Initialize myDb
+        myDb = new CustomerBaseHelper(this);
+
+        viewAll();
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         c_name = getResources().getStringArray(R.array.customer);

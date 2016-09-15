@@ -73,7 +73,6 @@
     <string name="start_weight">Start Weight</string>
     <string name="target_weight">Target:</string>
     <string name="unique_id_label">Customer ID</string>
-    <string name="id_hint">Phone # is unique ID</string>
     <string name="price_per_session">Price/each: </string>
     <string name="price">$29.99</string>
 

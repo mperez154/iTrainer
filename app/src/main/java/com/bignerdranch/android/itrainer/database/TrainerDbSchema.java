@@ -4,7 +4,7 @@ package com.bignerdranch.android.itrainer.database;
  * Created by Marco on 9/11/2016.
  */
 public class TrainerDbSchema {
-    //Table contaniing customer information
+    //Table containing customer information
     public final static class CustomerTable{
         public final static String NAME = "customers";
 
@@ -48,4 +48,18 @@ public class TrainerDbSchema {
 
         }
     }
+
+    public final static class UsersTable{
+        public final static String NAME = "users";
+
+        public final static class Cols {
+            public final static String ID = "id";
+            public final static String F_NAME = "F_Name";
+            public final static String L_NAME = "L_Name";
+            public final static String USER_NAME = "user_name";
+            public final static String PASSWORD = "password";
+
+        }
+    }
+
 }
