@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
     private ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
-    private ArrayList<DataProvider> dataList = new ArrayList<DataProvider>();
 
     //Constructor for RecyclerAdapter class
     public RecyclerAdapter(ArrayList<DataProvider> arrayList)
@@ -58,10 +57,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             imageView = (ImageView)view.findViewById(R.id.img);
             c_name = (TextView) view.findViewById(R.id.c_name);
             userName = (TextView) view.findViewById(R.id.userName);
-
         }
 
     }
-
-
 }

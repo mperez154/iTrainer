@@ -1,7 +1,6 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -75,22 +71,6 @@ public class ClientList1 extends AppCompatActivity {
 
     }
 
-    public void viewAll()
-    {
-
-        Cursor result = myDb.getAllCustomerData();
-        int i = 0;
-        String[] myArray = new String[10];
-
-        while (result.moveToNext())
-        {
-            myArray[i] = result.getString(i);
-            i++;
-            Toast.makeText(ClientList1.this, myArray[i], Toast.LENGTH_LONG).show();
-        }
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,8 +82,6 @@ public class ClientList1 extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         c_name = getResources().getStringArray(R.array.customer);
         userName = getResources().getStringArray(R.array.userName);
-
-        viewAll();
 
         int i = 0;
 
@@ -120,7 +98,6 @@ public class ClientList1 extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
@@ -135,6 +112,5 @@ public class ClientList1 extends AppCompatActivity {
             }
         });
     }
-
 
 }

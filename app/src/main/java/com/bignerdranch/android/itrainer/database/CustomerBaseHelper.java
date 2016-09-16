@@ -38,8 +38,6 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     }
 
-
-
     public boolean insertCustomerData(String f_name, String l_name, String dob_year, String dob_month, String dob_day, String unique_id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -89,7 +87,6 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         contentValues.put(PaymentInfoTable.Cols.EXP_DATE, exp_date);
         contentValues.put(PaymentInfoTable.Cols.PHONE, phone);
 
-
         long result = db.insert(PaymentInfoTable.NAME, null, contentValues);
 
         if (result == -1)
@@ -105,7 +102,6 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from " + CustomerTable.NAME , null );
         return result;
-
     }
 
 }
