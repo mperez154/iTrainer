@@ -38,6 +38,8 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+
     public boolean insertCustomerData(String f_name, String l_name, String dob_year, String dob_month, String dob_day, String unique_id)
     {
         SQLiteDatabase db = this.getWritableDatabase();

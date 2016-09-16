@@ -12,10 +12,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -30,7 +33,7 @@ public class ClientList1 extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     Button btnNewCustomer;
 
-    String[] c_name, userName;
+    String[] c_name, userName, f_name, l_name, unique_id;
     int[] img_res = {R.drawable.user1,R.drawable.user2, R.drawable.user3, R.drawable.user4,
             R.drawable.user5, R.drawable.user6, R.drawable.user7, R.drawable.user8,
             R.drawable.user9, R.drawable.user10};
@@ -74,45 +77,19 @@ public class ClientList1 extends AppCompatActivity {
 
     public void viewAll()
     {
+
         Cursor result = myDb.getAllCustomerData();
-        if(result.getCount() == 0)
+        int i = 0;
+        String[] myArray = new String[10];
+
+        while (result.moveToNext())
         {
-            //showMessage("Error", "Nothing Found");
-            return;
+            myArray[i] = result.getString(i);
+            i++;
+            Toast.makeText(ClientList1.this, myArray[i], Toast.LENGTH_LONG).show();
         }
 
-        //Toast.makeText(ClientList1.this, result.getString(0), Toast.LENGTH_LONG).show();
-
-
-
-        /*
-        StringBuffer buffer = new StringBuffer();
-        while(result.moveToNext())
-        {
-            buffer.append("System ID: " + result.getString(0) + "\n");
-            buffer.append("First Name: " + result.getString(1) + "\n");
-            buffer.append("Last Name: " + result.getString(2) + "\n");
-            buffer.append("Birth Day: " + result.getString(3) + "\n");
-            buffer.append("Year: " + result.getString(4) + "\n\n");
-            buffer.append("Month: " + result.getString(5) + "\n\n");
-            buffer.append("Unique ID: " + result.getString(6) + "\n\n");
-        }
-
-        //show all data
-        showMessage("Data", buffer.toString());
-        */
     }
-    /*
-
-    public void showMessage(String title, String msg)
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(msg);
-        builder.show();
-    }
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,11 +99,11 @@ public class ClientList1 extends AppCompatActivity {
         //Initialize myDb
         myDb = new CustomerBaseHelper(this);
 
-        viewAll();
-
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         c_name = getResources().getStringArray(R.array.customer);
         userName = getResources().getStringArray(R.array.userName);
+
+        viewAll();
 
         int i = 0;
 

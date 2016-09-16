@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
     private ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
+    private ArrayList<DataProvider> dataList = new ArrayList<DataProvider>();
 
     //Constructor for RecyclerAdapter class
     public RecyclerAdapter(ArrayList<DataProvider> arrayList)

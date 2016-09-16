@@ -1,13 +1,17 @@
 package com.bignerdranch.android.itrainer;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * Created by mperez5 on 9/8/2016.
  */
-public class DataProvider {
+public class DataProvider{
 
     //Create Variables for image, customer name and userName
     private int img_res;
     private String c_name, userName;
+
 
     //constructor which has 3 arguments
     public DataProvider(int img_res, String c_name, String userName)
@@ -18,7 +22,6 @@ public class DataProvider {
         this.setUserName(userName);
     }
 
-    //Setters and Getters for all variables
     public void setImg_res(int img_res) {
         this.img_res = img_res;
     }
@@ -42,4 +45,6 @@ public class DataProvider {
     public String getUserName() {
         return userName;
     }
+
+
 }
