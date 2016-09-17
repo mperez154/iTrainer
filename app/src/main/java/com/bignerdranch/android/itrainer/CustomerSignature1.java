@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
@@ -21,6 +22,8 @@ public class CustomerSignature1 extends AppCompatActivity {
     Button btnCancel;
     Button btnBack;
     Button btnSubmit;
+    TextView sessionSigScreen;
+    TextView totalPrice;
 
     //Create instance of database
     CustomerBaseHelper myDb;
@@ -83,7 +86,7 @@ public class CustomerSignature1 extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
         final String num_sessions = intent.getStringExtra("num_sessions");
-        final String payment = intent.getStringExtra("total_price");
+        final String finalPrice = intent.getStringExtra("finalPrice");
         final String new_session_count = intent.getStringExtra("new_session_count");
         final String address_tf = intent.getStringExtra("address_tf");
         final String phone_tf = intent.getStringExtra("phone_tf");
@@ -91,6 +94,11 @@ public class CustomerSignature1 extends AppCompatActivity {
         final String exp_date_tf = intent.getStringExtra("exp_date_tf");
 
         final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
+
+        sessionSigScreen = (TextView)findViewById(R.id.sessions_sig_screen);
+        sessionSigScreen.setText((getResources().getString(R.string.signature_screen_sessions) + " " + new_session_count + ", "));
+        totalPrice = (TextView)findViewById(R.id.total_price_sig_screen);
+        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + finalPrice));
 
         btnBack = (Button)findViewById(R.id.btnBack_signatureScreen);
         btnBack.setOnClickListener(new View.OnClickListener(){
@@ -131,7 +139,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD SESSIONS", Toast.LENGTH_SHORT).show();
 
 
-                boolean orderDataInserted = myDb.insertOrderData(unique_id, address_tf, new_session_count, payment, cc_tf, exp_date_tf, phone_tf);
+                boolean orderDataInserted = myDb.insertOrderData(unique_id, address_tf, new_session_count, finalPrice, cc_tf, exp_date_tf, phone_tf);
                 if(orderDataInserted)
                 {
                     Toast.makeText(CustomerSignature1.this, "Order added to database", Toast.LENGTH_SHORT).show();
@@ -147,7 +155,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 intent.putExtra("dob_m", dob_m);
                 intent.putExtra("dob_y", dob_y);
                 intent.putExtra("num_sessions", num_sessions);
-                intent.putExtra("total_price", payment);
+                intent.putExtra("finalPrice", finalPrice);
                 intent.putExtra("new_session_count", new_session_count);
                 intent.putExtra("address_tf", address_tf);
                 intent.putExtra("phone_tf", phone_tf);

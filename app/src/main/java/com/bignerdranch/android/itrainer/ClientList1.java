@@ -71,8 +71,8 @@ public class ClientList1 extends AppCompatActivity {
     private void populateListView()
     {
         Cursor cursor = myDb.getAllCustomerData();
-        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID, TrainerDbSchema.CustomerTable.Cols.F_NAME};
-        int[] toViewIds = new int[]{R.id.c_name, R.id.userName};
+        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME};
+        int[] toViewIds = new int[]{R.id.fName_ItemLayout, R.id.lName_ItemLayout};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
         ListView myList = (ListView)findViewById(R.id.listViewCustomers);

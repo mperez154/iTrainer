@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -18,6 +19,7 @@ public class AddSessions1 extends AppCompatActivity {
     Button btnAdd;
     Button btnBack;
     Button btnCancel;
+    TextView newSessionsHeader;
 
     //This inflates main_menu.xml
     @Override
@@ -75,8 +77,13 @@ public class AddSessions1 extends AppCompatActivity {
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
 
-        btnAdd = (Button)findViewById(R.id.add_button);
-        btnAdd.setOnClickListener(new View.OnClickListener(){
+        newSessionsHeader = (TextView)findViewById(R.id.new_sessions_header);
+        newSessionsHeader.setText(f_name + " " + l_name + ": " + getResources().getString(R.string.add_sessions_header)); //Sets the activity header to the new client name
+
+
+
+                btnAdd = (Button)findViewById(R.id.add_button);
+                btnAdd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(AddSessions1.this, PaymentScreen1.class);

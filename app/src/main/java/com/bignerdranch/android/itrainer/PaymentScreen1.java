@@ -20,6 +20,7 @@ public class PaymentScreen1 extends AppCompatActivity {
     Button btnCancel;
     Button btnBack;
     Button btnContinue;
+    TextView paymentHeader;
 
 
     //This inflates main_menu.xml
@@ -75,7 +76,6 @@ public class PaymentScreen1 extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
         final String num_sessions = intent.getStringExtra("num_sessions");  //Used to set new_session_count below
-        final String payment = intent.getStringExtra("total_price");
 
         final EditText new_session_count = (EditText)findViewById(R.id.new_session_count);
             new_session_count.setText(num_sessions);    //Sets newSessionCount variable to info fom previous screen
@@ -87,6 +87,10 @@ public class PaymentScreen1 extends AppCompatActivity {
 
         Integer intSessions = Integer.parseInt(num_sessions);   //Parse String to Int
         double totPrice = intSessions * 29.99;  //Number of sessions times $29.99
+        final String finalPrice = String.valueOf(totPrice);
+
+        paymentHeader = (TextView)findViewById(R.id.payment_screen_header);
+        paymentHeader.setText(f_name + " " + l_name + ": " + getResources().getString(R.string.payment_screen_header)); //Sets the activity header to the new client name
 
         price.setText("$" + totPrice);
 
@@ -104,12 +108,12 @@ public class PaymentScreen1 extends AppCompatActivity {
                 intent.putExtra("dob_m", dob_m);
                 intent.putExtra("dob_y", dob_y);
                 intent.putExtra("num_sessions", num_sessions);
-                intent.putExtra("total_price", payment);
                 intent.putExtra("new_session_count", new_session_count.getText().toString());
                 intent.putExtra("address_tf", address_tf.getText().toString());
                 intent.putExtra("phone_tf", phone_tf.getText().toString());
                 intent.putExtra("cc_tf", cc_tf.getText().toString());
                 intent.putExtra("exp_date_tf", exp_date_tf.getText().toString());
+                intent.putExtra("finalPrice", finalPrice);
                 startActivity(intent);
             }
         });

@@ -55,8 +55,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         {
             super(view);
             imageView = (ImageView)view.findViewById(R.id.img);
-            c_name = (TextView) view.findViewById(R.id.c_name);
-            userName = (TextView) view.findViewById(R.id.userName);
+            c_name = (TextView) view.findViewById(R.id.fName_ItemLayout);
+            userName = (TextView) view.findViewById(R.id.lName_ItemLayout);
         }
 
     }

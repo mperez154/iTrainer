@@ -23,7 +23,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CustomerTable.NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT,L_NAME TEXT, DOB_DAY TEXT, DOB_YEAR TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, DOB_MONTH TEXT)");
+        db.execSQL("create table " + CustomerTable.NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT," + CustomerTable.Cols.L_NAME + " TEXT, DOB_DAY TEXT, DOB_YEAR TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, DOB_MONTH TEXT)");
         db.execSQL("create table " + SessionsTable.NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, UNIQUE_ID TEXT, TOTAL_SESSIONS TEXT, SESSIONS_COMPLETED TEXT)");
         db.execSQL("create table " + PaymentInfoTable.NAME + "( ID  INTEGER PRIMARY KEY AUTOINCREMENT, ADDRESS  TEXT, UNIQUE_ID  TEXT,PHONE TEXT, ADDED_SESSIONS TEXT, PRICE TEXT, CC_INFO TEXT, EXP_DATE TEXT)");
     }
@@ -91,7 +91,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
     //Used to retrieve all data
     public Cursor getAllCustomerData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.UNIQUE_ID,CustomerTable.Cols.F_NAME},null,null,null,null,null);
+        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME},null,null,null,null,null);
         if(cursor != null){
             cursor.moveToFirst();
         }
