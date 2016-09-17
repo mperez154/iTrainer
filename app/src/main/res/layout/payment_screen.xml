@@ -102,10 +102,10 @@
                 android:src="@drawable/personal_trainer"
                 android:id="@+id/picture_id"
                 android:layout_gravity="top"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/total_price_sig_screen"
                 android:id="@+id/total_price_payment_screen"
                 android:gravity="center_horizontal"/>

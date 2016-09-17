@@ -18,21 +18,13 @@
         android:id="@+id/all_customers_header"
         android:layout_gravity="center_horizontal"
         android:layout_margin="24dp"/>
-    <LinearLayout
-        android:id="@+id/recycler_view_layout"
-        android:orientation="horizontal"
+
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="400dp"
+        android:id="@+id/listViewCustomers">
+    </ListView>
 
-       <android.support.v7.widget.RecyclerView
-           android:layout_height="400dp"
-           android:layout_width="match_parent"
-           android:scrollbars="vertical"
-           android:id="@+id/recyclerView"/>
-
-
-
-    </LinearLayout>
     <LinearLayout
 
         android:orientation="horizontal"
@@ -40,24 +32,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="center_horizontal">
-        <!--
-        <Button
-            android:text="@string/back_button"
-            android:id="@+id/back_button"
-        />
-        -->
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_customer"
             android:id="@+id/new_customer_button"
         />
-        <!--
-        <Button
-            android:text="@string/next_button"
-            android:id="@+id/next_button"
-        />
-        -->
+
 
     </LinearLayout>
 </LinearLayout>

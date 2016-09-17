@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -19,7 +18,6 @@ public class AddSessions1 extends AppCompatActivity {
     Button btnAdd;
     Button btnBack;
     Button btnCancel;
-    TextView price;
 
     //This inflates main_menu.xml
     @Override
@@ -77,9 +75,6 @@ public class AddSessions1 extends AppCompatActivity {
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
 
-       price = (TextView)findViewById(R.id.tot_price_tf);
-        price.setText("100.00");
-
         btnAdd = (Button)findViewById(R.id.add_button);
         btnAdd.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -92,7 +87,6 @@ public class AddSessions1 extends AppCompatActivity {
                 intent.putExtra("dob_m", dob_m);
                 intent.putExtra("dob_y", dob_y);
                 intent.putExtra("num_sessions", num_sessions.getText().toString());
-                intent.putExtra("total_price", price.getText().toString());
                 startActivity(intent);
             }
         });

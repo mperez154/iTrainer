@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -19,6 +20,7 @@ public class PaymentScreen1 extends AppCompatActivity {
     Button btnCancel;
     Button btnBack;
     Button btnContinue;
+
 
     //This inflates main_menu.xml
     @Override
@@ -72,14 +74,22 @@ public class PaymentScreen1 extends AppCompatActivity {
         final String dob_d = intent.getStringExtra("dob_d");
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
-        final String num_sessions = intent.getStringExtra("num_sessions");
+        final String num_sessions = intent.getStringExtra("num_sessions");  //Used to set new_session_count below
         final String payment = intent.getStringExtra("total_price");
 
         final EditText new_session_count = (EditText)findViewById(R.id.new_session_count);
+            new_session_count.setText(num_sessions);    //Sets newSessionCount variable to info fom previous screen
         final EditText address_tf = (EditText)findViewById(R.id.address_tf);
         final EditText phone_tf = (EditText)findViewById(R.id.phone_tf);
         final EditText cc_tf = (EditText)findViewById(R.id.cc_tf);
         final EditText exp_date_tf = (EditText)findViewById(R.id.exp_date_tf);
+        final TextView price = (TextView) findViewById(R.id.total_price_payment_screen);
+
+        Integer intSessions = Integer.parseInt(num_sessions);   //Parse String to Int
+        double totPrice = intSessions * 29.99;  //Number of sessions times $29.99
+
+        price.setText("$" + totPrice);
+
 
 
         btnContinue = (Button)findViewById(R.id.btnContinue);

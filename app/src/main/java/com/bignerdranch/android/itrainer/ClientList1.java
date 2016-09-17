@@ -1,18 +1,20 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
+import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
 
 import java.util.ArrayList;
 
@@ -24,12 +26,9 @@ public class ClientList1 extends AppCompatActivity {
     //Create instance of database
     CustomerBaseHelper myDb;
 
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager layoutManager;
     Button btnNewCustomer;
 
-    String[] c_name, userName, f_name, l_name, unique_id;
+    String[] c_name, userName;
     int[] img_res = {R.drawable.user1,R.drawable.user2, R.drawable.user3, R.drawable.user4,
             R.drawable.user5, R.drawable.user6, R.drawable.user7, R.drawable.user8,
             R.drawable.user9, R.drawable.user10};
@@ -67,8 +66,17 @@ public class ClientList1 extends AppCompatActivity {
             dialog.show(manager, "About Us");
         }
         return true;
+    }
 
-
+    private void populateListView()
+    {
+        Cursor cursor = myDb.getAllCustomerData();
+        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID, TrainerDbSchema.CustomerTable.Cols.F_NAME};
+        int[] toViewIds = new int[]{R.id.c_name, R.id.userName};
+        SimpleCursorAdapter myCursorAdapter;
+        myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
+        ListView myList = (ListView)findViewById(R.id.listViewCustomers);
+        myList.setAdapter(myCursorAdapter);
     }
 
     @Override
@@ -79,7 +87,8 @@ public class ClientList1 extends AppCompatActivity {
         //Initialize myDb
         myDb = new CustomerBaseHelper(this);
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        populateListView();
+
         c_name = getResources().getStringArray(R.array.customer);
         userName = getResources().getStringArray(R.array.userName);
 
@@ -92,11 +101,6 @@ public class ClientList1 extends AppCompatActivity {
             i++;
         }
 
-        adapter = new RecyclerAdapter(arrayList);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())

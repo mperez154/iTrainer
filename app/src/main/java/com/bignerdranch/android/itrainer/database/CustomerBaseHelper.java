@@ -17,16 +17,17 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "customers.db";
 
-    public CustomerBaseHelper(Context context){
+    public CustomerBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
-        db.execSQL("create table " + CustomerTable.NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, F_NAME TEXT,L_NAME TEXT, DOB_DAY TEXT, DOB_YEAR TEXT, UNIQUE_ID TEXT, DOB_MONTH TEXT)");
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table " + CustomerTable.NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT,L_NAME TEXT, DOB_DAY TEXT, DOB_YEAR TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, DOB_MONTH TEXT)");
         db.execSQL("create table " + SessionsTable.NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, UNIQUE_ID TEXT, TOTAL_SESSIONS TEXT, SESSIONS_COMPLETED TEXT)");
         db.execSQL("create table " + PaymentInfoTable.NAME + "( ID  INTEGER PRIMARY KEY AUTOINCREMENT, ADDRESS  TEXT, UNIQUE_ID  TEXT,PHONE TEXT, ADDED_SESSIONS TEXT, PRICE TEXT, CC_INFO TEXT, EXP_DATE TEXT)");
-}
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -38,11 +39,10 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertCustomerData(String f_name, String l_name, String dob_year, String dob_month, String dob_day, String unique_id)
-    {
+    public boolean insertCustomerData(String f_name, String l_name, String dob_year, String dob_month, String dob_day, String unique_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CustomerTable.Cols.F_NAME,f_name);
+        contentValues.put(CustomerTable.Cols.F_NAME, f_name);
         contentValues.put(CustomerTable.Cols.L_NAME, l_name);
         contentValues.put(CustomerTable.Cols.DOB_YEAR, dob_year);
         contentValues.put(CustomerTable.Cols.DOB_MONTH, dob_month);
@@ -51,15 +51,12 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(CustomerTable.NAME, null, contentValues);
 
-        if (result == -1)
-        {
+        if (result == -1) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
-    public boolean insertSessionsData(String unique_id, String total_sessions, String sessions_completed)
-    {
+    public boolean insertSessionsData(String unique_id, String total_sessions, String sessions_completed) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(SessionsTable.Cols.UNIQUE_ID, unique_id);
@@ -68,15 +65,12 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(SessionsTable.NAME, null, contentValues);
 
-        if(result == -1)
-        {
+        if (result == -1) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
-    public boolean insertOrderData(String unique_id, String address, String added_sessions, String price, String cc_info, String exp_date, String phone)
-    {
+    public boolean insertOrderData(String unique_id, String address, String added_sessions, String price, String cc_info, String exp_date, String phone) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(PaymentInfoTable.Cols.UNIQUE_ID, unique_id);
@@ -89,19 +83,19 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(PaymentInfoTable.NAME, null, contentValues);
 
-        if (result == -1)
-        {
+        if (result == -1) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
     //Used to retrieve all data
-    public Cursor getAllCustomerData()
-    {
+    public Cursor getAllCustomerData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select * from " + CustomerTable.NAME , null );
-        return result;
+        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.UNIQUE_ID,CustomerTable.Cols.F_NAME},null,null,null,null,null);
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 
 }

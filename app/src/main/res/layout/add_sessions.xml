@@ -66,28 +66,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/total_sessions"
-            android:id="@+id/total_sessions_label" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tot_price_tf"
-            android:layout_marginLeft="10dp"
-        />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
         android:gravity="bottom|center_horizontal">
         <Button
             android:layout_width="wrap_content"

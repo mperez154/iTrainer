@@ -18,7 +18,7 @@ import java.util.Date;
 public class AddCustomer1 extends AppCompatActivity {
     Button btnCancel;
     Button btnNext;
-    Long uniqueID = (new Date().getTime())/100000;    //Get the current time() and divides by 100,000 to create 8 digit unique ID
+    Long uniqueID = (new Date().getTime())/10000;    //Get the current time() and divides by 100,000 to create 8 digit unique ID
 
 
     //This inflates main_menu.xml
