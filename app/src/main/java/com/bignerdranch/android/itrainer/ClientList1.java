@@ -64,8 +64,8 @@ public class ClientList1 extends AppCompatActivity{
         else if (id == R.id.about_us_id)
         {
             FragmentManager manager = getSupportFragmentManager();
-            LogOffFragment dialog = new LogOffFragment();
-            dialog.show(manager, "About Us");
+            Intent intent = new Intent(ClientList1.this, AboutUs.class);
+            startActivity(intent);
         }
         return true;
     }
@@ -89,6 +89,8 @@ public class ClientList1 extends AppCompatActivity{
                 String lastName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.L_NAME));
                 //String UID = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID));
                 Toast.makeText(ClientList1.this, "Name: " + firstName + " " + lastName + "\nCustomer ID: ", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ClientList1.this, CustomerDetails.class);
+                startActivity(intent);
 
             }
         });
@@ -106,9 +108,6 @@ public class ClientList1 extends AppCompatActivity{
         myDb = new CustomerBaseHelper(this);
 
         populateListView();
-
-
-
         c_name = getResources().getStringArray(R.array.customer);
         userName = getResources().getStringArray(R.array.userName);
 
@@ -120,9 +119,6 @@ public class ClientList1 extends AppCompatActivity{
             arrayList.add(dataProvider);
             i++;
         }
-
-
-
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();

@@ -53,6 +53,14 @@
             android:name=".Receipt"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name=".CustomerDetails"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".AboutUs"
+            android:label="@string/app_name">
+        </activity>
     </application>
 
 </manifest>

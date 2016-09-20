@@ -1,12 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/user_login_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tfCustomerDetailsHeader"
-        android:text="TEST"/>
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tfCustomerDetailsHeader"
+            android:text="CUSTOMER INFORMATION"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:id="@+id/profilePic"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="FirstName LastName"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Full Address"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="Full Phone Number"/>
+            <TextView
+                android:text="Full DOB"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="Number of Sessions: 100"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:gravity="center"/>
+        <TextView
+            android:text="Completed: 50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:id="@+id/textView3"/>
+        <Button
+            android:text="COMPLETE SESSION"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="25dp"
+            android:id="@+id/button3"
+            android:layout_gravity="center_vertical|center_horizontal"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:layout_gravity="bottom">
+            <Button
+                android:text="BACK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btBack"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+            />
+            <Button
+                android:text="ADD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

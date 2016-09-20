@@ -1,23 +1,21 @@
 package com.bignerdranch.android.itrainer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.content.Intent;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.view.View;
 
 /**
- * Created by mperez5 on 9/20/2016.
+ * Created by Marco on 9/20/2016.
  */
 
-public class CustomerDetails extends AppCompatActivity {
-    ImageView profilePic;
-    Button bkButton;
+public class AboutUs extends AppCompatActivity{
 
     //This inflates main_menu.xml
     @Override
@@ -46,34 +44,22 @@ public class CustomerDetails extends AppCompatActivity {
         else if (id == R.id.about_us_id)
         {
             FragmentManager manager = getSupportFragmentManager();
-            LogOffFragment dialog = new LogOffFragment();
-            dialog.show(manager, "About Us");
+            Intent intent = new Intent(AboutUs.this, AboutUs.class);
+            startActivity(intent);
         }
         return true;
 
 
     }
 
-    @Override
+        @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.customer_details);
-
-            profilePic = (ImageView)findViewById(R.id.profilePic);
-            profilePic.setImageResource(R.drawable.user9);
-
-            bkButton = (Button)findViewById(R.id.btBack);
-            bkButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    Intent intent = new Intent(CustomerDetails.this, ClientList1.class);
-                    startActivity(intent);
-                }
-            });
+            setContentView(R.layout.about_us);
 
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.user_login_info, LoggedInFragment.newInstance())
                     .commit();
 
-    }
+        }
 }
