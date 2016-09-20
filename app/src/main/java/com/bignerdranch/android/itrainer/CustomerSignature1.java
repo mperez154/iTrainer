@@ -28,7 +28,6 @@ public class CustomerSignature1 extends AppCompatActivity {
     //Create instance of database
     CustomerBaseHelper myDb;
 
-
     //This inflates main_menu.xml
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

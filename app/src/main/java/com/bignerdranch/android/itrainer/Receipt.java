@@ -79,7 +79,7 @@ public class Receipt extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
         final String num_sessions = intent.getStringExtra("num_sessions");
-        final String finalPrice = intent.getStringExtra("finalPrice");
+        final Double finalPrice = Double.parseDouble(intent.getStringExtra("finalPrice"));
         final String new_session_count = intent.getStringExtra("new_session_count");
         final String address_tf = intent.getStringExtra("address_tf");
         final String phone_tf = intent.getStringExtra("phone_tf");
@@ -97,10 +97,8 @@ public class Receipt extends AppCompatActivity {
         numSessions.setText(getResources().getString(R.string.num_sessions) + " " + new_session_count);
 
         price = (TextView)findViewById(R.id.receipt_price);
-        double finalPrice2 = Double.parseDouble(finalPrice);
-        NumberFormat baseFormat = NumberFormat.getCurrencyInstance();
-        String finalPrice3 = baseFormat.format(finalPrice2);
-        price.setText(getResources().getString(R.string.total_price_sig_screen) + " " + finalPrice3);
+        String finalPrice2 = NumberFormat.getCurrencyInstance().format(finalPrice); //Format the double so that it looks like currence (i.e. two decimal places)
+        price.setText(getResources().getString(R.string.total_price_sig_screen) + " " + finalPrice2);
 
         btnPrint = (Button)findViewById(R.id.btnPrint);
         btnPrint.setOnClickListener(new View.OnClickListener(){

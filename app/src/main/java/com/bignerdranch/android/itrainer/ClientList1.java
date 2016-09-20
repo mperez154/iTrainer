@@ -10,8 +10,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by mperez5 on 9/5/2016.
  */
-public class ClientList1 extends AppCompatActivity {
+public class ClientList1 extends AppCompatActivity{
 
     //Create instance of database
     CustomerBaseHelper myDb;
@@ -77,7 +79,23 @@ public class ClientList1 extends AppCompatActivity {
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
         ListView myList = (ListView)findViewById(R.id.listViewCustomers);
         myList.setAdapter(myCursorAdapter);
+
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> myList, View view, int position, long id) {
+
+                Cursor cursor = (Cursor)myList.getItemAtPosition(position);
+                String firstName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.F_NAME));
+                String lastName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.L_NAME));
+                //String UID = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID));
+                Toast.makeText(ClientList1.this, "Name: " + firstName + " " + lastName + "\nCustomer ID: ", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +106,8 @@ public class ClientList1 extends AppCompatActivity {
         myDb = new CustomerBaseHelper(this);
 
         populateListView();
+
+
 
         c_name = getResources().getStringArray(R.array.customer);
         userName = getResources().getStringArray(R.array.userName);
@@ -100,6 +120,7 @@ public class ClientList1 extends AppCompatActivity {
             arrayList.add(dataProvider);
             i++;
         }
+
 
 
         getSupportFragmentManager().beginTransaction()

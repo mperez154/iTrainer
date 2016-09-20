@@ -26,5 +26,4 @@ public class LoggedInFragment extends Fragment {
         return rootView;
     }
 
-
 }
