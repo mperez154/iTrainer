@@ -36,7 +36,7 @@
     <string name="cancel">Cancel</string>
     <string name="signature_label">Signature</string>
     <string name="signature_screen_sessions">Sessions</string>
-    <string name="total_price_sig_screen">Total: $</string>
+    <string name="total_price_sig_screen">Total:</string>
     <string name="submit_button">Submit</string>
     <string name="payment_screen_header">Payment</string>
     <string name="number_of_sessions">Number of Sessions</string>
@@ -53,10 +53,10 @@
     <string name="company_address">123 Main Street</string>
     <string name="company_city_st_zip">Tampa, FL 33610</string>
     <string name="company_phone">813-555-5555</string>
-    <string name="receipt_name">Customer: John Doe</string>
-    <string name="customer_address">456 Mickey Mouse Road</string>
+    <string name="receipt_name">Customer:</string>
+    <string name="customer_address">Address:</string>
     <string name="customer_city_st_zip">St. Pete, FL 33716</string>
-    <string name="num_sessions">Number of Sessions: 5</string>
+    <string name="num_sessions">Number of Sessions:</string>
     <string name="print_button">Print</string>
     <string name="email_button">eMail</string>
     <string name="logged_in_note">Logged In:</string>

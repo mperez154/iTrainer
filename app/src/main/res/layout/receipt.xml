@@ -67,16 +67,9 @@
         android:text="@string/customer_address"
         android:id="@+id/customer_address"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/customer_city_st_zip"
-        android:id="@+id/customer_city_st_zip"
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="20dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

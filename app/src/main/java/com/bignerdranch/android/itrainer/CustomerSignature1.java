@@ -98,7 +98,7 @@ public class CustomerSignature1 extends AppCompatActivity {
         sessionSigScreen = (TextView)findViewById(R.id.sessions_sig_screen);
         sessionSigScreen.setText((getResources().getString(R.string.signature_screen_sessions) + " " + new_session_count + ", "));
         totalPrice = (TextView)findViewById(R.id.total_price_sig_screen);
-        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + finalPrice));
+        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + " $" + finalPrice));
 
         btnBack = (Button)findViewById(R.id.btnBack_signatureScreen);
         btnBack.setOnClickListener(new View.OnClickListener(){

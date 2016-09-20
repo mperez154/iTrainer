@@ -10,6 +10,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.text.NumberFormat;
 
 /**
  * Created by Marco on 9/4/2016.
@@ -18,6 +21,10 @@ public class Receipt extends AppCompatActivity {
     Button btnPrint;
     Button btnEmail;
     Button btnHome;
+    TextView customerName;
+    TextView customerAddress;
+    TextView numSessions;
+    TextView price;
 
     //This inflates main_menu.xml
     @Override
@@ -72,7 +79,7 @@ public class Receipt extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
         final String num_sessions = intent.getStringExtra("num_sessions");
-        final String payment = intent.getStringExtra("total_price");
+        final String finalPrice = intent.getStringExtra("finalPrice");
         final String new_session_count = intent.getStringExtra("new_session_count");
         final String address_tf = intent.getStringExtra("address_tf");
         final String phone_tf = intent.getStringExtra("phone_tf");
@@ -80,6 +87,20 @@ public class Receipt extends AppCompatActivity {
         final String exp_date_tf = intent.getStringExtra("exp_date_tf");
         final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
 
+        customerName = (TextView)findViewById(R.id.receipt_name);
+        customerName.setText(getResources().getString(R.string.receipt_name) + " " + f_name + " " + l_name);
+
+        customerAddress = (TextView)findViewById(R.id.customer_address);
+        customerAddress.setText(getResources().getString(R.string.customer_address) + "\n" + address_tf);
+
+        numSessions = (TextView)findViewById(R.id.receipt_num_sessions);
+        numSessions.setText(getResources().getString(R.string.num_sessions) + " " + new_session_count);
+
+        price = (TextView)findViewById(R.id.receipt_price);
+        double finalPrice2 = Double.parseDouble(finalPrice);
+        NumberFormat baseFormat = NumberFormat.getCurrencyInstance();
+        String finalPrice3 = baseFormat.format(finalPrice2);
+        price.setText(getResources().getString(R.string.total_price_sig_screen) + " " + finalPrice3);
 
         btnPrint = (Button)findViewById(R.id.btnPrint);
         btnPrint.setOnClickListener(new View.OnClickListener(){
