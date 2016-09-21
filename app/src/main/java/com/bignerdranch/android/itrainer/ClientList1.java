@@ -57,13 +57,11 @@ public class ClientList1 extends AppCompatActivity{
         }
         else if(id == R.id.settings_id)
         {
-            FragmentManager manager = getSupportFragmentManager();
-            LogOffFragment dialog = new LogOffFragment();
-            dialog.show(manager, "Settings");
+            Intent intent = new Intent(ClientList1.this, Settings.class);
+            startActivity(intent);
         }
         else if (id == R.id.about_us_id)
         {
-            FragmentManager manager = getSupportFragmentManager();
             Intent intent = new Intent(ClientList1.this, AboutUs.class);
             startActivity(intent);
         }
@@ -108,6 +106,7 @@ public class ClientList1 extends AppCompatActivity{
         myDb = new CustomerBaseHelper(this);
 
         populateListView();
+
         c_name = getResources().getStringArray(R.array.customer);
         userName = getResources().getStringArray(R.array.userName);
 

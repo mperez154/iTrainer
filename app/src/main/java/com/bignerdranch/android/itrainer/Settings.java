@@ -9,10 +9,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 /**
- * Created by Marco on 9/20/2016.
+ * Created by mperez5 on 9/21/2016.
  */
 
-public class AboutUs extends AppCompatActivity{
+public class Settings extends AppCompatActivity {
 
     //This inflates main_menu.xml
     @Override
@@ -34,13 +34,13 @@ public class AboutUs extends AppCompatActivity{
         }
         else if(id == R.id.settings_id)
         {
-            Intent intent = new Intent(AboutUs.this, Settings.class);
-            startActivity(intent);
+            FragmentManager manager = getSupportFragmentManager();
+            LogOffFragment dialog = new LogOffFragment();
+            dialog.show(manager, "Settings");
         }
         else if (id == R.id.about_us_id)
         {
-            FragmentManager manager = getSupportFragmentManager();
-            Intent intent = new Intent(AboutUs.this, AboutUs.class);
+            Intent intent = new Intent(Settings.this, AboutUs.class);
             startActivity(intent);
         }
         return true;
@@ -48,14 +48,14 @@ public class AboutUs extends AppCompatActivity{
 
     }
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.about_us);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings);
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.user_login_info, LoggedInFragment.newInstance())
-                    .commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.user_login_info, LoggedInFragment.newInstance())
+                .commit();
 
-        }
+    }
 }
