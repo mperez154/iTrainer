@@ -40,18 +40,16 @@ public class CustomerDetails extends AppCompatActivity {
         else if(id == R.id.settings_id)
         {
             FragmentManager manager = getSupportFragmentManager();
-            LogOffFragment dialog = new LogOffFragment();
-            dialog.show(manager, "Settings");
+            SettingsFragment dialog = new SettingsFragment();
+            dialog.show(manager, "SettingsFragment");
         }
         else if (id == R.id.about_us_id)
         {
             FragmentManager manager = getSupportFragmentManager();
-            LogOffFragment dialog = new LogOffFragment();
+            AboutUsFragment dialog = new AboutUsFragment();
             dialog.show(manager, "About Us");
         }
         return true;
-
-
     }
 
     @Override

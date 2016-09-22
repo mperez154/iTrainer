@@ -23,7 +23,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CustomerTable.NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT," + CustomerTable.Cols.L_NAME + " TEXT, DOB_DAY TEXT, DOB_YEAR TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, DOB_MONTH TEXT)");
+        db.execSQL("create table " + CustomerTable.NAME + "("+ CustomerTable.Cols.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT," + CustomerTable.Cols.L_NAME + " TEXT, " + CustomerTable.Cols.DOB_DAY + " TEXT, " + CustomerTable.Cols.DOB_YEAR + " TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, " + CustomerTable.Cols.DOB_MONTH + " TEXT)");
         db.execSQL("create table " + SessionsTable.NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, UNIQUE_ID TEXT, TOTAL_SESSIONS TEXT, SESSIONS_COMPLETED TEXT)");
         db.execSQL("create table " + PaymentInfoTable.NAME + "( ID  INTEGER PRIMARY KEY AUTOINCREMENT, ADDRESS  TEXT, UNIQUE_ID  TEXT,PHONE TEXT, ADDED_SESSIONS TEXT, PRICE TEXT, CC_INFO TEXT, EXP_DATE TEXT)");
     }

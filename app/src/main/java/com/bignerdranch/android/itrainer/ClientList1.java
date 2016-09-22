@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
@@ -36,7 +35,6 @@ public class ClientList1 extends AppCompatActivity{
             R.drawable.user9, R.drawable.user10};
     ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
 
-
     //This inflates main_menu.xml
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -57,13 +55,15 @@ public class ClientList1 extends AppCompatActivity{
         }
         else if(id == R.id.settings_id)
         {
-            Intent intent = new Intent(ClientList1.this, Settings.class);
-            startActivity(intent);
+            FragmentManager manager = getSupportFragmentManager();
+            SettingsFragment dialog = new SettingsFragment();
+            dialog.show(manager, "SettingsFragment");
         }
         else if (id == R.id.about_us_id)
         {
-            Intent intent = new Intent(ClientList1.this, AboutUs.class);
-            startActivity(intent);
+            FragmentManager manager = getSupportFragmentManager();
+            AboutUsFragment dialog = new AboutUsFragment();
+            dialog.show(manager, "About Us");
         }
         return true;
     }
@@ -86,16 +86,12 @@ public class ClientList1 extends AppCompatActivity{
                 String firstName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.F_NAME));
                 String lastName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.L_NAME));
                 //String UID = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID));
-                Toast.makeText(ClientList1.this, "Name: " + firstName + " " + lastName + "\nCustomer ID: ", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(ClientList1.this, CustomerDetails.class);
                 startActivity(intent);
 
             }
         });
-
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +107,6 @@ public class ClientList1 extends AppCompatActivity{
         userName = getResources().getStringArray(R.array.userName);
 
         int i = 0;
-
         for(String name : c_name)
         {
             DataProvider dataProvider = new DataProvider(img_res[i], name, userName[i]);
@@ -132,5 +127,4 @@ public class ClientList1 extends AppCompatActivity{
             }
         });
     }
-
 }

@@ -61,6 +61,10 @@
     <string name="email_button">eMail</string>
     <string name="logged_in_note">Logged In:</string>
     <string name="logOff_Msg01">Logging You Off</string>
+    <string name="settings_Msg01">Settings</string>
+    <string name="settings_Msg02">Settings feature coming soon!</string>
+    <string name="about_Msg01">About Us</string>
+    <string name="about_Msg02">About us feature coming soon!</string>
     <string name="btnContinue">Continue</string>
     <string name="home">Home</string>
     <string name="age">Age</string>
