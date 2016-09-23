@@ -1,24 +1,19 @@
 package com.bignerdranch.android.itrainer;
 
-import android.database.Cursor;
-import android.gesture.GestureOverlayView;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.content.Intent;
 import android.view.MenuItem;
-import android.widget.AdapterView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
-import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
 
 /**
  * Created by mperez5 on 9/20/2016.
@@ -28,7 +23,6 @@ public class CustomerDetails extends AppCompatActivity {
     ImageView profilePic;
     Button bkButton;
 
-    //Create instance of database
     CustomerBaseHelper myDb;
 
     //This inflates main_menu.xml
@@ -80,10 +74,20 @@ public class CustomerDetails extends AppCompatActivity {
             final String dob_d = intent.getStringExtra("dob_d");
             final String dob_m = intent.getStringExtra("dob_m");
             final String dob_y = intent.getStringExtra("dob_y");
+            final String position = intent.getStringExtra("position");
+
+            Toast.makeText(CustomerDetails.this, "TEST2: " + position, Toast.LENGTH_LONG).show();
+
+            //Cursor cursor = myDb.getAllSessionData(position);
 
             TextView fName = (TextView) findViewById(R.id.fN_customerDetails);
-            fName.setText(f_name);
-
+            fName.setText(f_name + " " + l_name);
+            TextView addres = (TextView)findViewById(R.id.add_cust_details);
+            addres.setText("Address coming soon");
+            TextView dob = (TextView)findViewById(R.id.dob_cust_details);
+            dob.setText(dob_m + "/" + dob_d + "/" + dob_y);
+            //TextView phone = (TextView)findViewById(R.id.phone_cust_details);
+            //phone.setText(cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.PaymentInfoTable.Cols.PHONE)));
 
 
             bkButton = (Button)findViewById(R.id.btBack);

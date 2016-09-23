@@ -57,9 +57,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
+                android:id="@+id/phone_cust_details"
                 android:text="Full Phone Number"/>
             <TextView
                 android:text="Full DOB"
+                android:id="@+id/dob_cust_details"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
