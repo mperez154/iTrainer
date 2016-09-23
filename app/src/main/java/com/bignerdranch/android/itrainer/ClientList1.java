@@ -71,7 +71,7 @@ public class ClientList1 extends AppCompatActivity{
     private void populateListView()
     {
         Cursor cursor = myDb.getAllCustomerData();
-        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME};
+        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME, TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID, TrainerDbSchema.CustomerTable.Cols.DOB_DAY, TrainerDbSchema.CustomerTable.Cols.DOB_MONTH, TrainerDbSchema.CustomerTable.Cols.DOB_YEAR};
         int[] toViewIds = new int[]{R.id.fName_ItemLayout, R.id.lName_ItemLayout};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
@@ -85,8 +85,17 @@ public class ClientList1 extends AppCompatActivity{
                 Cursor cursor = (Cursor)myList.getItemAtPosition(position);
                 String firstName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.F_NAME));
                 String lastName = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.L_NAME));
-                //String UID = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID));
+                String uniqueID = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID));
+                String dob_d = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_DAY));
+                String dob_m = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_MONTH));
+                String dob_y = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_YEAR));
                 Intent intent = new Intent(ClientList1.this, CustomerDetails.class);
+                intent.putExtra("unique_id", uniqueID);   //This will make the unique ID available in the next activity
+                intent.putExtra("f_name", firstName);
+                intent.putExtra("l_name", lastName);
+                intent.putExtra("dob_d", dob_d);
+                intent.putExtra("dob_m", dob_m);
+                intent.putExtra("dob_y", dob_y);
                 startActivity(intent);
 
             }

@@ -10,13 +10,14 @@ import android.os.Bundle;
  */
 
 public class SettingsFragment extends android.support.v4.app.DialogFragment {
+    String messageBody = "Setting 1\nSetting 2\nSetting 3";
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.settings_Msg01)
-                .setMessage(R.string.settings_Msg02)
+                .setMessage(messageBody)
                 .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             @Override

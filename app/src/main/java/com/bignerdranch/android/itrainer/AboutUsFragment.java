@@ -10,13 +10,14 @@ import android.os.Bundle;
  */
 
 public class AboutUsFragment extends android.support.v4.app.DialogFragment {
+    String messageBody = "Built by Marco Perez\nYear Built: 2016\nClass: Android Programming";
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.about_Msg01)
-                .setMessage(R.string.about_Msg02)
+                .setMessage(messageBody)
                 .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             @Override

@@ -91,7 +91,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
     //Used to retrieve all data
     public Cursor getAllCustomerData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME},null,null,null,null,null);
+        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME, CustomerTable.Cols.UNIQUE_ID, CustomerTable.Cols.DOB_DAY, CustomerTable.Cols.DOB_MONTH, CustomerTable.Cols.DOB_YEAR},null,null,null,null,null);
         if(cursor != null){
             cursor.moveToFirst();
         }

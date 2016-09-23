@@ -123,7 +123,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 boolean isInserted = myDb.insertCustomerData(f_name, l_name, dob_y, dob_m, dob_d, unique_id);
                 if(isInserted)
                 {
-                    Toast.makeText(CustomerSignature1.this, "Customer added to database", Toast.LENGTH_SHORT).show();
+                    //Doe nothing
                 }
                 else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD CUSTOMER", Toast.LENGTH_SHORT).show();
 
@@ -131,7 +131,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 boolean sessionDataInserted = myDb.insertSessionsData(unique_id, new_session_count, "0");
                 if(sessionDataInserted)
                 {
-                    Toast.makeText(CustomerSignature1.this, "Session data added to database", Toast.LENGTH_SHORT).show();
+                    //Doe nothing
                 }
                 else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD SESSIONS", Toast.LENGTH_SHORT).show();
 
@@ -139,7 +139,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 boolean orderDataInserted = myDb.insertOrderData(unique_id, address_tf, new_session_count, finalPrice, cc_tf, exp_date_tf, phone_tf);
                 if(orderDataInserted)
                 {
-                    Toast.makeText(CustomerSignature1.this, "Order added to database", Toast.LENGTH_SHORT).show();
+                    //Doe nothing
                 }
                 else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD ORDER", Toast.LENGTH_SHORT).show();
 
