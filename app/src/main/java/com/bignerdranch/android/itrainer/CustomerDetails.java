@@ -1,8 +1,11 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,10 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
+import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
 
 /**
  * Created by mperez5 on 9/20/2016.
@@ -23,7 +28,7 @@ public class CustomerDetails extends AppCompatActivity {
     ImageView profilePic;
     Button bkButton;
 
-    CustomerBaseHelper myDb;
+    CustomerBaseHelper myDb = new CustomerBaseHelper(this);
 
     //This inflates main_menu.xml
     @Override
@@ -76,9 +81,17 @@ public class CustomerDetails extends AppCompatActivity {
             final String dob_y = intent.getStringExtra("dob_y");
             final String position = intent.getStringExtra("position");
 
-            Toast.makeText(CustomerDetails.this, "TEST2: " + position, Toast.LENGTH_LONG).show();
+            Cursor cursor = myDb.getAllSessionData(unique_id);
 
-            //Cursor cursor = myDb.getAllSessionData(position);
+            String uniqueID2 = cursor.getString(0);
+            String address = cursor.getString(1);
+            String added_sessions = cursor.getString(2);
+            String price = cursor.getString(3);
+            String phone = cursor.getString(4);
+            String cc_info = cursor.getString(5);
+            String exp_date = cursor.getString(6);
+
+            Toast.makeText(CustomerDetails.this, "TEST " + exp_date, Toast.LENGTH_LONG).show();
 
             TextView fName = (TextView) findViewById(R.id.fN_customerDetails);
             fName.setText(f_name + " " + l_name);
@@ -87,8 +100,7 @@ public class CustomerDetails extends AppCompatActivity {
             TextView dob = (TextView)findViewById(R.id.dob_cust_details);
             dob.setText(dob_m + "/" + dob_d + "/" + dob_y);
             //TextView phone = (TextView)findViewById(R.id.phone_cust_details);
-            //phone.setText(cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.PaymentInfoTable.Cols.PHONE)));
-
+            //phone.setText(toViewIds[6]);
 
             bkButton = (Button)findViewById(R.id.btBack);
             bkButton.setOnClickListener(new View.OnClickListener(){

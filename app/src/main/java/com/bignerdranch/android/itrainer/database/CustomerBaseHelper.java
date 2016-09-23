@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.bignerdranch.android.itrainer.ClientList1;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema.CustomerTable;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema.PaymentInfoTable;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema.SessionsTable;
@@ -98,25 +99,17 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getAllSessionData(){
-        String[] columns = new String[]{"row _id", PaymentInfoTable.Cols.UNIQUE_ID, PaymentInfoTable.Cols.ADDRESS, PaymentInfoTable.Cols.ADDED_SESSIONS, PaymentInfoTable.Cols.PRICE, PaymentInfoTable.Cols.PHONE, PaymentInfoTable.Cols.CC_INFO, PaymentInfoTable.Cols.EXP_DATE};
+    public Cursor getAllSessionData(String name){
+        String[] columns = new String[]{PaymentInfoTable.Cols.UNIQUE_ID, PaymentInfoTable.Cols.ADDRESS, PaymentInfoTable.Cols.ADDED_SESSIONS, PaymentInfoTable.Cols.PRICE, PaymentInfoTable.Cols.PHONE, PaymentInfoTable.Cols.CC_INFO, PaymentInfoTable.Cols.EXP_DATE};
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(PaymentInfoTable.NAME, columns,null,null,null,null,null);
+
+        Cursor cursor = db.query(PaymentInfoTable.NAME, columns, PaymentInfoTable.Cols.UNIQUE_ID + " = '"+name+"' " ,null,null,null,null);
         if(cursor != null) {
             cursor.moveToFirst();
         }
         return cursor;
     }
 
-    public Cursor getAllSessionData(String selection){
-        String[] columns = new String[]{"row _id", PaymentInfoTable.Cols.UNIQUE_ID, PaymentInfoTable.Cols.ADDRESS, PaymentInfoTable.Cols.ADDED_SESSIONS, PaymentInfoTable.Cols.PRICE, PaymentInfoTable.Cols.PHONE, PaymentInfoTable.Cols.CC_INFO, PaymentInfoTable.Cols.EXP_DATE};
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(PaymentInfoTable.NAME, columns, selection,null,null,null,null);
-        if(cursor != null) {
-            cursor.moveToFirst();
-        }
-        return cursor;
-    }
 
 }
 
