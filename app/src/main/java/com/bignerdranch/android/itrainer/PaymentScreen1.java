@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
 /**
  * Created by mperez5 on 9/5/2016.
  */
@@ -90,9 +92,7 @@ public class PaymentScreen1 extends AppCompatActivity {
         paymentHeader = (TextView)findViewById(R.id.payment_screen_header);
         paymentHeader.setText(f_name + " " + l_name + ": " + getResources().getString(R.string.payment_screen_header)); //Sets the activity header to the new client name
 
-        price.setText("$" + totPrice);
-
-
+        price.setText(NumberFormat.getCurrencyInstance().format(totPrice));
 
         btnContinue = (Button)findViewById(R.id.btnContinue);
         btnContinue.setOnClickListener(new View.OnClickListener(){
