@@ -99,7 +99,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getAllSessionData(String name){
+    public Cursor getAllOrderData(String name){
         String[] columns = new String[]{PaymentInfoTable.Cols.UNIQUE_ID, PaymentInfoTable.Cols.ADDRESS, PaymentInfoTable.Cols.ADDED_SESSIONS, PaymentInfoTable.Cols.PRICE, PaymentInfoTable.Cols.PHONE, PaymentInfoTable.Cols.CC_INFO, PaymentInfoTable.Cols.EXP_DATE};
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -110,6 +110,16 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getAllSessionData(String name){
+        String [] columns = new String[] {SessionsTable.Cols.UNIQUE_ID, SessionsTable.Cols.TOTAL_SESSIONS, SessionsTable.Cols.SESSIONS_COMPLETED};
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(SessionsTable.NAME, columns, SessionsTable.Cols.UNIQUE_ID + " = '"+name+"'", null, null, null, null);
+        if(cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
 
 }
 

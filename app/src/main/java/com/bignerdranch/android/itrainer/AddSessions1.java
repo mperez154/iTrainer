@@ -1,6 +1,7 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +60,7 @@ public class AddSessions1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_sessions);
 
-        //Carry over from last activity
+        //Carry over from AddCustomer screen
         Intent intent = getIntent();
         final String unique_id = intent.getStringExtra("unique_id");
         final String f_name = intent.getStringExtra("f_name");
@@ -68,8 +69,23 @@ public class AddSessions1 extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
 
+        //Carry over from last Payment Screen (Clicking back)
+        Intent intent2 = getIntent();
+        final String unique_id_back = intent.getStringExtra("unique_id");
+        final String f_name_back = intent.getStringExtra("f_name");
+        final String l_name_back = intent.getStringExtra("l_name");
+        final String dob_d_back = intent.getStringExtra("dob_d");
+        final String dob_m_back = intent.getStringExtra("dob_m");
+        final String dob_y_back = intent.getStringExtra("dob_y");
+        final String num_sessions_back = intent.getStringExtra("num_sessions");
+
         //New Variables
         final EditText num_sessions = (EditText)findViewById(R.id.sessions_add_tf);
+
+        if(num_sessions_back !=  null)
+        {
+            num_sessions.setText(num_sessions_back);
+        }
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
@@ -82,17 +98,17 @@ public class AddSessions1 extends AppCompatActivity {
 
                 btnAdd = (Button)findViewById(R.id.add_button);
                 btnAdd.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(AddSessions1.this, PaymentScreen1.class);
-                intent.putExtra("unique_id", unique_id);   //This will make the unique ID available in the next activity
-                intent.putExtra("f_name", f_name);
-                intent.putExtra("l_name", l_name);
-                intent.putExtra("dob_d", dob_d);
-                intent.putExtra("dob_m", dob_m);
-                intent.putExtra("dob_y", dob_y);
-                intent.putExtra("num_sessions", num_sessions.getText().toString());
-                startActivity(intent);
+                @Override
+                public void onClick(View v){
+                    Intent intent = new Intent(AddSessions1.this, PaymentScreen1.class);
+                    intent.putExtra("unique_id", unique_id);   //This will make the unique ID available in the next activity
+                    intent.putExtra("f_name", f_name);
+                    intent.putExtra("l_name", l_name);
+                    intent.putExtra("dob_d", dob_d);
+                    intent.putExtra("dob_m", dob_m);
+                    intent.putExtra("dob_y", dob_y);
+                    intent.putExtra("num_sessions", num_sessions.getText().toString());
+                    startActivity(intent);
             }
         });
 
@@ -101,6 +117,12 @@ public class AddSessions1 extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(AddSessions1.this, AddCustomer1.class);
+                intent.putExtra("unique_id", unique_id);   //This will make the unique ID available in the next activity
+                intent.putExtra("f_name", f_name);
+                intent.putExtra("l_name", l_name);
+                intent.putExtra("dob_d", dob_d);
+                intent.putExtra("dob_m", dob_m);
+                intent.putExtra("dob_y", dob_y);
                 startActivity(intent);
             }
         });

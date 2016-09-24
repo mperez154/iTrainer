@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
+import java.text.NumberFormat;
+
 /**
  * Created by mperez5 on 9/5/2016.
  */
@@ -83,7 +85,7 @@ public class CustomerSignature1 extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
         final String num_sessions = intent.getStringExtra("num_sessions");
-        final String finalPrice = intent.getStringExtra("finalPrice");
+        final Double finalPrice = Double.parseDouble(intent.getStringExtra("finalPrice"));
         final String new_session_count = intent.getStringExtra("new_session_count");
         final String address_tf = intent.getStringExtra("address_tf");
         final String phone_tf = intent.getStringExtra("phone_tf");
@@ -95,13 +97,27 @@ public class CustomerSignature1 extends AppCompatActivity {
         sessionSigScreen = (TextView)findViewById(R.id.sessions_sig_screen);
         sessionSigScreen.setText((getResources().getString(R.string.signature_screen_sessions) + " " + new_session_count + ", "));
         totalPrice = (TextView)findViewById(R.id.total_price_sig_screen);
-        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + " $" + finalPrice));
+        String finalPrice2 = NumberFormat.getCurrencyInstance().format(finalPrice); //Format the double so that it looks like currence (i.e. two decimal places)
+        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + " $" + finalPrice2));
 
         btnBack = (Button)findViewById(R.id.btnBack_signatureScreen);
         btnBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(CustomerSignature1.this, PaymentScreen1.class);
+                intent.putExtra("unique_id", unique_id);   //This will make the unique ID available in the next activity
+                intent.putExtra("f_name", f_name);
+                intent.putExtra("l_name", l_name);
+                intent.putExtra("dob_d", dob_d);
+                intent.putExtra("dob_m", dob_m);
+                intent.putExtra("dob_y", dob_y);
+                intent.putExtra("num_sessions", num_sessions);
+                intent.putExtra("finalPrice", finalPrice.toString());
+                intent.putExtra("new_session_count", new_session_count);
+                intent.putExtra("address_tf", address_tf);
+                intent.putExtra("phone_tf", phone_tf);
+                intent.putExtra("cc_tf", cc_tf);
+                intent.putExtra("exp_date_tf", exp_date_tf);
                 startActivity(intent);
             }
         });
@@ -114,6 +130,8 @@ public class CustomerSignature1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         btnSubmit = (Button)findViewById(R.id.submit_button);
         btnSubmit.setOnClickListener(new View.OnClickListener(){
@@ -136,7 +154,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 else  Toast.makeText(CustomerSignature1.this, "FAILED TO ADD SESSIONS", Toast.LENGTH_SHORT).show();
 
 
-                boolean orderDataInserted = myDb.insertOrderData(unique_id, address_tf, new_session_count, finalPrice, cc_tf, exp_date_tf, phone_tf);
+                boolean orderDataInserted = myDb.insertOrderData(unique_id, address_tf, new_session_count, finalPrice.toString(), cc_tf, exp_date_tf, phone_tf);
                 if(orderDataInserted)
                 {
                     //Doe nothing
@@ -152,7 +170,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 intent.putExtra("dob_m", dob_m);
                 intent.putExtra("dob_y", dob_y);
                 intent.putExtra("num_sessions", num_sessions);
-                intent.putExtra("finalPrice", finalPrice);
+                intent.putExtra("finalPrice", finalPrice.toString());
                 intent.putExtra("new_session_count", new_session_count);
                 intent.putExtra("address_tf", address_tf);
                 intent.putExtra("phone_tf", phone_tf);

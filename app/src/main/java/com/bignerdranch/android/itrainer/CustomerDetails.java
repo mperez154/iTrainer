@@ -27,6 +27,8 @@ import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
 public class CustomerDetails extends AppCompatActivity {
     ImageView profilePic;
     Button bkButton;
+    Button btAdd;
+    Button btCompleteS;
 
     CustomerBaseHelper myDb = new CustomerBaseHelper(this);
 
@@ -79,20 +81,22 @@ public class CustomerDetails extends AppCompatActivity {
             final String dob_d = intent.getStringExtra("dob_d");
             final String dob_m = intent.getStringExtra("dob_m");
             final String dob_y = intent.getStringExtra("dob_y");
-            final String position = intent.getStringExtra("position");
 
-            Cursor cursor = myDb.getAllSessionData(unique_id);
+            //Database queries from CustomerBaseHelper class
+            Cursor cursor = myDb.getAllOrderData(unique_id);
+            Cursor cursor1 = myDb.getAllSessionData(unique_id);
 
-            String uniqueID2 = cursor.getString(0);
+            //Values retreived from database
             String address = cursor.getString(1);
             String added_sessions = cursor.getString(2);
             String price = cursor.getString(3);
             String phone = cursor.getString(4);
             String cc_info = cursor.getString(5);
             String exp_date = cursor.getString(6);
+            String totalSessions = cursor1.getString(1);
+            String completedSessions = cursor1.getString(2);
 
-            Toast.makeText(CustomerDetails.this, "TEST " + exp_date, Toast.LENGTH_LONG).show();
-
+            //Set all activity widgets
             TextView fName = (TextView) findViewById(R.id.fN_customerDetails);
             fName.setText(f_name + " " + l_name);
             TextView tvAddress = (TextView)findViewById(R.id.add_cust_details);
@@ -101,6 +105,10 @@ public class CustomerDetails extends AppCompatActivity {
             dob.setText(dob_m + "/" + dob_d + "/" + dob_y);
             TextView tvPhone = (TextView)findViewById(R.id.phone_cust_details);
             tvPhone.setText(phone);
+            TextView tvTotSessions = (TextView)findViewById(R.id.tvTotalSessions_cust_details);
+            tvTotSessions.setText(getResources().getString(R.string.totSessionsMsg01)+ " " + totalSessions);
+            TextView tvComSessions = (TextView)findViewById(R.id.tvCompSessions_customerDetails);
+            tvComSessions.setText(getResources().getString(R.string.completedMsg01)+ " " + completedSessions);
 
             bkButton = (Button)findViewById(R.id.btBack);
             bkButton.setOnClickListener(new View.OnClickListener(){
@@ -108,6 +116,27 @@ public class CustomerDetails extends AppCompatActivity {
                 public void onClick(View v){
                     Intent intent = new Intent(CustomerDetails.this, ClientList1.class);
                     startActivity(intent);
+                }
+            });
+
+            btAdd = (Button)findViewById(R.id.add_button);
+            btAdd.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    FragmentManager manager = getSupportFragmentManager();
+                    AddSessionsFragment dialog = new AddSessionsFragment();
+                    dialog.show(manager, "Sessions to Add");
+                }
+            });
+
+            btCompleteS = (Button)findViewById(R.id.btCompleteSession);
+            btCompleteS.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    FragmentManager manager = getSupportFragmentManager();
+                    CompleteSessionsFragment dialog = new CompleteSessionsFragment();
+                    dialog.show(manager, "Session Complete");
+
                 }
             });
 

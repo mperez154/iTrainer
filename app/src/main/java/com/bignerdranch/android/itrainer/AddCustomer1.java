@@ -59,6 +59,15 @@ public class AddCustomer1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_customer);
 
+        //Carry over from last activity
+        Intent intent = getIntent();
+        final String unique_id_back = intent.getStringExtra("unique_id");
+        final String f_name_back = intent.getStringExtra("f_name");
+        final String l_name_back = intent.getStringExtra("l_name");
+        final String dob_d_back = intent.getStringExtra("dob_d");
+        final String dob_m_back = intent.getStringExtra("dob_m");
+        final String dob_y_back = intent.getStringExtra("dob_y");
+
         final EditText f_name = (EditText)findViewById(R.id.f_name_tf);
         final EditText l_name = (EditText)findViewById(R.id.l_name_tf);
         final EditText dob_d = (EditText)findViewById(R.id.dob_d_tf);
@@ -66,7 +75,19 @@ public class AddCustomer1 extends AppCompatActivity {
         final EditText dob_y = (EditText)findViewById(R.id.dob_y_tf);
         final EditText unique_id = (EditText)findViewById(R.id.unique_id_tf);
 
-        unique_id.setText(uniqueID.toString()); //Sets this field using the uniqueID variable created above
+        if(unique_id_back !=  null)
+        {
+            f_name.setText(f_name_back);
+            l_name.setText(l_name_back);
+            dob_d.setText(dob_d_back);
+            dob_m.setText(dob_m_back);
+            dob_y.setText(dob_y_back);
+            unique_id.setText(unique_id_back);
+        }
+        else
+        {
+            unique_id.setText(uniqueID.toString()); //Sets this field using the uniqueID variable created above
+        }
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())

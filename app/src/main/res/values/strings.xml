@@ -75,6 +75,10 @@
     <string name="unique_id_label">Customer ID</string>
     <string name="price_per_session">Price/each: </string>
     <string name="price">$29.99</string>
+    <string name="completedMsg01">Completed:</string>
+    <string name="totSessionsMsg01">Number of Sessions:</string>
+    <string name="addSessionsMsg01">How many sessions are you adding?</string>
+    <string name="completeSessionMsg01">Is this session completed?</string>
 
     <string-array name="customer">
         <item>"John Doe"</item>

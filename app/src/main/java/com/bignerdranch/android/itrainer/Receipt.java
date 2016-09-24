@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -102,8 +103,9 @@ public class Receipt extends AppCompatActivity {
         btnPrint.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Receipt.this, ClientList1.class);
-                startActivity(intent);
+                Toast.makeText(Receipt.this, "Print feature coming soon!", Toast.LENGTH_LONG).show();
+                //Intent intent = new Intent(Receipt.this, ClientList1.class);
+                //startActivity(intent);
             }
         });
 
@@ -111,8 +113,9 @@ public class Receipt extends AppCompatActivity {
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Receipt.this, ClientList1.class);
-                startActivity(intent);
+                Toast.makeText(Receipt.this, "Email feature coming soon!", Toast.LENGTH_LONG).show();
+                //Intent intent = new Intent(Receipt.this, ClientList1.class);
+                //startActivity(intent);
             }
         });
 

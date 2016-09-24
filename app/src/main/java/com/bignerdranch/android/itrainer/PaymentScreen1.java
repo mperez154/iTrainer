@@ -121,6 +121,16 @@ public class PaymentScreen1 extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(PaymentScreen1.this, AddSessions1.class);
+                intent.putExtra("unique_id", unique_id);   //This will make the unique ID available in the next activity
+                intent.putExtra("f_name", f_name);
+                intent.putExtra("l_name", l_name);
+                intent.putExtra("dob_d", dob_d);
+                intent.putExtra("dob_m", dob_m);
+                intent.putExtra("dob_y", dob_y);
+                intent.putExtra("num_sessions", num_sessions);
+                intent.putExtra("new_session_count", new_session_count.getText().toString());
+                intent.putExtra("address_tf", address_tf.getText().toString());
+                intent.putExtra("phone_tf", phone_tf.getText().toString());
                 startActivity(intent);
             }
         });

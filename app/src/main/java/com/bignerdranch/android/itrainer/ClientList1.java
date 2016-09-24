@@ -89,7 +89,6 @@ public class ClientList1 extends AppCompatActivity{
                 String dob_d = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_DAY));
                 String dob_m = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_MONTH));
                 String dob_y = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_YEAR));
-                String position2 = Integer.toString(position);
                 Intent intent = new Intent(ClientList1.this, CustomerDetails.class);
                 intent.putExtra("unique_id", uniqueID);   //This will make the unique ID available in the next activity
                 intent.putExtra("f_name", firstName);
@@ -97,7 +96,6 @@ public class ClientList1 extends AppCompatActivity{
                 intent.putExtra("dob_d", dob_d);
                 intent.putExtra("dob_m", dob_m);
                 intent.putExtra("dob_y", dob_y);
-                intent.putExtra("position", position2);
                 startActivity(intent);
 
             }
