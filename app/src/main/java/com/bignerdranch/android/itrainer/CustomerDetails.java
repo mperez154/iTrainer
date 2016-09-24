@@ -95,12 +95,12 @@ public class CustomerDetails extends AppCompatActivity {
 
             TextView fName = (TextView) findViewById(R.id.fN_customerDetails);
             fName.setText(f_name + " " + l_name);
-            TextView addres = (TextView)findViewById(R.id.add_cust_details);
-            addres.setText("Address coming soon");
+            TextView tvAddress = (TextView)findViewById(R.id.add_cust_details);
+            tvAddress.setText(address);
             TextView dob = (TextView)findViewById(R.id.dob_cust_details);
             dob.setText(dob_m + "/" + dob_d + "/" + dob_y);
-            //TextView phone = (TextView)findViewById(R.id.phone_cust_details);
-            //phone.setText(toViewIds[6]);
+            TextView tvPhone = (TextView)findViewById(R.id.phone_cust_details);
+            tvPhone.setText(phone);
 
             bkButton = (Button)findViewById(R.id.btBack);
             bkButton.setOnClickListener(new View.OnClickListener(){
