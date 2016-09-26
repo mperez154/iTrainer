@@ -89,6 +89,22 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         } else return true;
     }
 
+    public boolean insertUser(String id, String f_name, String l_name, String user_name, String password)
+    {
+       SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TrainerDbSchema.UsersTable.Cols.ID, id);
+        contentValues.put(TrainerDbSchema.UsersTable.Cols.F_NAME, f_name);
+        contentValues.put(TrainerDbSchema.UsersTable.Cols.L_NAME, l_name);
+        contentValues.put(TrainerDbSchema.UsersTable.Cols.USER_NAME, user_name);
+        contentValues.put(TrainerDbSchema.UsersTable.Cols.PASSWORD, password);
+
+        long result = db.insert(TrainerDbSchema.UsersTable.NAME, null, contentValues);
+        if(result == -1){
+            return false;
+        } else return true;
+    }
+
     //Used to retrieve all data
     public Cursor getAllCustomerData() {
         SQLiteDatabase db = this.getWritableDatabase();

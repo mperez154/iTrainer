@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 
+import static java.net.Proxy.Type.HTTP;
+
 /**
  * Created by Marco on 9/4/2016.
  */
@@ -113,9 +115,13 @@ public class Receipt extends AppCompatActivity {
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(Receipt.this, "Email feature coming soon!", Toast.LENGTH_LONG).show();
-                //Intent intent = new Intent(Receipt.this, ClientList1.class);
-                //startActivity(intent);
+                //Toast.makeText(Receipt.this, "Email feature coming soon!", Toast.LENGTH_LONG).show();
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"mperez154@verizon.net"}); // recipients
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "iTrainer Receipt: " + f_name + " " + l_name);
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Customer: " + f_name + " " + l_name + "\n" + "Price: " + NumberFormat.getCurrencyInstance().format(finalPrice));
+                startActivity(emailIntent);
             }
         });
 

@@ -1,7 +1,11 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -10,7 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import java.io.File;
 import java.util.Date;
+
+import static android.R.attr.data;
 
 /**
  * Created by mperez5 on 9/5/2016.
@@ -19,6 +28,9 @@ public class AddCustomer1 extends AppCompatActivity {
     Button btnCancel;
     Button btnNext;
     Long uniqueID = (new Date().getTime())/10000;    //Get the current time() and divides by 100,000 to create 8 digit unique ID
+    Button btPicture;
+    ImageView ivCustomerPic;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     //This inflates main_menu.xml
@@ -55,6 +67,15 @@ public class AddCustomer1 extends AppCompatActivity {
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ivCustomerPic.setImageBitmap(imageBitmap);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_customer);
@@ -74,6 +95,7 @@ public class AddCustomer1 extends AppCompatActivity {
         final EditText dob_m = (EditText)findViewById(R.id.dob_m_tf);
         final EditText dob_y = (EditText)findViewById(R.id.dob_y_tf);
         final EditText unique_id = (EditText)findViewById(R.id.unique_id_tf);
+        ivCustomerPic = (ImageView)findViewById(R.id.customerPicture);
 
         if(unique_id_back !=  null)
         {
@@ -93,6 +115,20 @@ public class AddCustomer1 extends AppCompatActivity {
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
 
+
+
+        btPicture = (Button)findViewById(R.id.btPic);
+        btPicture.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (pictureIntent.resolveActivity(getPackageManager()) != null) {
+                    //Uri uri = Uri.
+                    startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+            }
+
+        });
 
         btnCancel = (Button)findViewById(R.id.btnCancel_new_customer);
         btnCancel.setOnClickListener(new View.OnClickListener(){
@@ -122,6 +158,9 @@ public class AddCustomer1 extends AppCompatActivity {
         });
 
 
+
+
     }
+
 
 }

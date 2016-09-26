@@ -98,7 +98,7 @@ public class CustomerSignature1 extends AppCompatActivity {
         sessionSigScreen.setText((getResources().getString(R.string.signature_screen_sessions) + " " + new_session_count + ", "));
         totalPrice = (TextView)findViewById(R.id.total_price_sig_screen);
         String finalPrice2 = NumberFormat.getCurrencyInstance().format(finalPrice); //Format the double so that it looks like currence (i.e. two decimal places)
-        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + " $" + finalPrice2));
+        totalPrice.setText((getResources().getString(R.string.total_price_sig_screen) + " " + finalPrice2));
 
         btnBack = (Button)findViewById(R.id.btnBack_signatureScreen);
         btnBack.setOnClickListener(new View.OnClickListener(){
