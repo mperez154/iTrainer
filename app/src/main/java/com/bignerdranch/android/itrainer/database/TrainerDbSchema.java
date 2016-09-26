@@ -1,7 +1,5 @@
 package com.bignerdranch.android.itrainer.database;
 
-import java.sql.Blob;
-
 /**
  * Created by Marco on 9/11/2016.
  */
@@ -18,7 +16,7 @@ public class TrainerDbSchema {
             public final static String DOB_YEAR = "DOB_Year";
             public final static String DOB_MONTH = "DOB_Month";
             public final static String DOB_DAY = "DOB_Day";
-            //public Blob PICTURE;
+            public final static String PICTURE = "Picture";
 
         }
     }

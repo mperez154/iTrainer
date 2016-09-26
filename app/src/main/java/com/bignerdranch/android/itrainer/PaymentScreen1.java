@@ -1,6 +1,7 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -23,6 +25,7 @@ public class PaymentScreen1 extends AppCompatActivity {
     Button btnBack;
     Button btnContinue;
     TextView paymentHeader;
+    ImageView customerPicture;
 
 
     //This inflates main_menu.xml
@@ -100,6 +103,7 @@ public class PaymentScreen1 extends AppCompatActivity {
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
         final String num_sessions = intent.getStringExtra("num_sessions");  //Used to set new_session_count below
+        final Bitmap customerImage = (Bitmap)intent.getParcelableExtra("customerImage");
 
         if(unique_id_back !=  null)
         {
@@ -117,6 +121,9 @@ public class PaymentScreen1 extends AppCompatActivity {
 
         paymentHeader = (TextView)findViewById(R.id.payment_screen_header);
         paymentHeader.setText(f_name + " " + l_name + ": " + getResources().getString(R.string.payment_screen_header)); //Sets the activity header to the new client name
+
+        customerPicture = (ImageView)findViewById(R.id.picture_id);
+        customerPicture.setImageBitmap(customerImage);
 
         price.setText(NumberFormat.getCurrencyInstance().format(totPrice));
 
@@ -138,6 +145,7 @@ public class PaymentScreen1 extends AppCompatActivity {
                 intent.putExtra("cc_tf", cc_tf.getText().toString());
                 intent.putExtra("exp_date_tf", exp_date_tf.getText().toString());
                 intent.putExtra("finalPrice", finalPrice);
+                intent.putExtra("customerImage", customerImage);
                 startActivity(intent);
             }
         });

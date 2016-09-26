@@ -1,7 +1,7 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
-import android.gesture.GestureOverlayView;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -68,6 +68,7 @@ public class AddSessions1 extends AppCompatActivity {
         final String dob_d = intent.getStringExtra("dob_d");
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
+        final Bitmap customerImage = (Bitmap)intent.getParcelableExtra("customerImage");
 
         //Carry over from last Payment Screen (Clicking back)
         Intent intent2 = getIntent();
@@ -108,6 +109,7 @@ public class AddSessions1 extends AppCompatActivity {
                     intent.putExtra("dob_m", dob_m);
                     intent.putExtra("dob_y", dob_y);
                     intent.putExtra("num_sessions", num_sessions.getText().toString());
+                    intent.putExtra("customerImage", customerImage);
                     startActivity(intent);
             }
         });

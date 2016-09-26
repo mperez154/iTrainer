@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.bignerdranch.android.itrainer.ClientList1;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema.CustomerTable;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema.PaymentInfoTable;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema.SessionsTable;
@@ -15,7 +14,7 @@ import com.bignerdranch.android.itrainer.database.TrainerDbSchema.SessionsTable;
  * Created by Marco on 9/11/2016.
  */
 public class CustomerBaseHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
     private static final String DATABASE_NAME = "customers.db";
 
     public CustomerBaseHelper(Context context) {
@@ -24,7 +23,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CustomerTable.NAME + "("+ CustomerTable.Cols.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT," + CustomerTable.Cols.L_NAME + " TEXT, " + CustomerTable.Cols.DOB_DAY + " TEXT, " + CustomerTable.Cols.DOB_YEAR + " TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, " + CustomerTable.Cols.DOB_MONTH + " TEXT)");
+        db.execSQL("create table " + CustomerTable.NAME + "("+ CustomerTable.Cols.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CustomerTable.Cols.F_NAME + " TEXT," + CustomerTable.Cols.L_NAME + " TEXT, " + CustomerTable.Cols.DOB_DAY + " TEXT, " + CustomerTable.Cols.DOB_YEAR + " TEXT," + CustomerTable.Cols.UNIQUE_ID + " TEXT, " + CustomerTable.Cols.DOB_MONTH + " TEXT, " + CustomerTable.Cols.PICTURE + " BLOB)");
         db.execSQL("create table " + SessionsTable.NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, UNIQUE_ID TEXT, TOTAL_SESSIONS TEXT, SESSIONS_COMPLETED TEXT)");
         db.execSQL("create table " + PaymentInfoTable.NAME + "( ID  INTEGER PRIMARY KEY AUTOINCREMENT, ADDRESS  TEXT, UNIQUE_ID  TEXT,PHONE TEXT, ADDED_SESSIONS TEXT, PRICE TEXT, CC_INFO TEXT, EXP_DATE TEXT)");
     }
@@ -40,7 +39,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertCustomerData(String f_name, String l_name, String dob_year, String dob_month, String dob_day, String unique_id) {
+    public boolean insertCustomerData(String f_name, String l_name, String dob_year, String dob_month, String dob_day, String unique_id, byte[] picture) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CustomerTable.Cols.F_NAME, f_name);
@@ -49,6 +48,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         contentValues.put(CustomerTable.Cols.DOB_MONTH, dob_month);
         contentValues.put(CustomerTable.Cols.DOB_DAY, dob_day);
         contentValues.put(CustomerTable.Cols.UNIQUE_ID, unique_id);
+        contentValues.put(CustomerTable.Cols.PICTURE, picture);
 
         long result = db.insert(CustomerTable.NAME, null, contentValues);
 
@@ -108,7 +108,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
     //Used to retrieve all data
     public Cursor getAllCustomerData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME, CustomerTable.Cols.UNIQUE_ID, CustomerTable.Cols.DOB_DAY, CustomerTable.Cols.DOB_MONTH, CustomerTable.Cols.DOB_YEAR},null,null,null,null,null);
+        Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME, CustomerTable.Cols.UNIQUE_ID, CustomerTable.Cols.DOB_DAY, CustomerTable.Cols.DOB_MONTH, CustomerTable.Cols.DOB_YEAR, CustomerTable.Cols.PICTURE},null,null,null,null,null);
         if(cursor != null){
             cursor.moveToFirst();
         }

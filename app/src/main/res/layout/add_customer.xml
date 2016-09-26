@@ -67,9 +67,9 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/DOB"
                     android:id="@+id/dob_label"
-                    android:layout_margin="10dp" />
+                    android:layout_margin="5dp" />
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:ems="2"
                     android:id="@+id/dob_m_tf"
@@ -80,7 +80,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="/"/>
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:ems="2"
                     android:id="@+id/dob_d_tf"
@@ -91,7 +91,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="/"/>
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:ems="4"
                     android:id="@+id/dob_y_tf"
@@ -104,6 +104,7 @@
                 android:text="@string/unique_id_label"
                 android:id="@+id/unique_id_label"
                 android:layout_margin="10dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

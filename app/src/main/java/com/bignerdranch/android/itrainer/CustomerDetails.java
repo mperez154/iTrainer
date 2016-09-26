@@ -2,10 +2,10 @@ package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,12 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
-import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
 
 /**
  * Created by mperez5 on 9/20/2016.
@@ -29,6 +26,7 @@ public class CustomerDetails extends AppCompatActivity {
     Button bkButton;
     Button btAdd;
     Button btCompleteS;
+    Bitmap customerImage2;
 
     CustomerBaseHelper myDb = new CustomerBaseHelper(this);
 
@@ -72,6 +70,7 @@ public class CustomerDetails extends AppCompatActivity {
 
             profilePic = (ImageView)findViewById(R.id.profilePic);
             profilePic.setImageResource(R.drawable.user9);
+            //profilePic.setImageBitmap(customerImage2);    //Eventually use this to set the imageView
 
             //Carry over from last activity
             Intent intent = getIntent();
@@ -81,6 +80,9 @@ public class CustomerDetails extends AppCompatActivity {
             final String dob_d = intent.getStringExtra("dob_d");
             final String dob_m = intent.getStringExtra("dob_m");
             final String dob_y = intent.getStringExtra("dob_y");
+            final byte[] customerImage = intent.getByteArrayExtra("customerImage"); //image coming from Customer List activity
+
+            customerImage2 = BitmapFactory.decodeByteArray(customerImage, 0, customerImage.length);  //Converting from byte[] to Bitmap
 
             //Database queries from CustomerBaseHelper class
             Cursor cursor = myDb.getAllOrderData(unique_id);

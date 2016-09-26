@@ -68,14 +68,17 @@ public class ClientList1 extends AppCompatActivity{
         return true;
     }
 
-    private void populateListView()
-    {
+    private void populateListView() {
         Cursor cursor = myDb.getAllCustomerData();
-        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME, TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID, TrainerDbSchema.CustomerTable.Cols.DOB_DAY, TrainerDbSchema.CustomerTable.Cols.DOB_MONTH, TrainerDbSchema.CustomerTable.Cols.DOB_YEAR};
+
+        //byte[] test1 = cursor.getBlob(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.PICTURE));
+        //Bitmap test = BitmapFactory.decodeByteArray(test1, 0, test1.length);  //Converting from byte[] to Bitmap
+
+        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME, TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID, TrainerDbSchema.CustomerTable.Cols.DOB_DAY, TrainerDbSchema.CustomerTable.Cols.DOB_MONTH, TrainerDbSchema.CustomerTable.Cols.DOB_YEAR, TrainerDbSchema.CustomerTable.Cols.PICTURE};
         int[] toViewIds = new int[]{R.id.fName_ItemLayout, R.id.lName_ItemLayout};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
-        ListView myList = (ListView)findViewById(R.id.listViewCustomers);
+        ListView myList = (ListView) findViewById(R.id.listViewCustomers);
         myList.setAdapter(myCursorAdapter);
 
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -89,6 +92,7 @@ public class ClientList1 extends AppCompatActivity{
                 String dob_d = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_DAY));
                 String dob_m = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_MONTH));
                 String dob_y = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_YEAR));
+                byte[] customerImage = cursor.getBlob(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.PICTURE));    //Grabbing byte[] from database
                 Intent intent = new Intent(ClientList1.this, CustomerDetails.class);
                 intent.putExtra("unique_id", uniqueID);   //This will make the unique ID available in the next activity
                 intent.putExtra("f_name", firstName);
@@ -96,6 +100,7 @@ public class ClientList1 extends AppCompatActivity{
                 intent.putExtra("dob_d", dob_d);
                 intent.putExtra("dob_m", dob_m);
                 intent.putExtra("dob_y", dob_y);
+                intent.putExtra("customerImage", customerImage); //putting in intent so its available in the customerDetails activity
                 startActivity(intent);
 
             }

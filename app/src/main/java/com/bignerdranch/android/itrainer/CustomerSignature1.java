@@ -2,6 +2,7 @@ package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
 import android.gesture.GestureOverlayView;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.text.NumberFormat;
 
 /**
@@ -91,6 +93,7 @@ public class CustomerSignature1 extends AppCompatActivity {
         final String phone_tf = intent.getStringExtra("phone_tf");
         final String cc_tf = intent.getStringExtra("cc_tf");
         final String exp_date_tf = intent.getStringExtra("exp_date_tf");
+        final Bitmap customerImage = (Bitmap)intent.getParcelableExtra("customerImage");
 
         final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
 
@@ -138,7 +141,13 @@ public class CustomerSignature1 extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                boolean isInserted = myDb.insertCustomerData(f_name, l_name, dob_y, dob_m, dob_d, unique_id);
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                customerImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] photo = baos.toByteArray();
+
+
+                boolean isInserted = myDb.insertCustomerData(f_name, l_name, dob_y, dob_m, dob_d, unique_id, photo);
                 if(isInserted)
                 {
                     //Doe nothing
