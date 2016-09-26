@@ -2,6 +2,8 @@ package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -28,12 +30,9 @@ public class ClientList1 extends AppCompatActivity{
     CustomerBaseHelper myDb;
 
     Button btnNewCustomer;
-
-    String[] c_name, userName;
     int[] img_res = {R.drawable.user1,R.drawable.user2, R.drawable.user3, R.drawable.user4,
             R.drawable.user5, R.drawable.user6, R.drawable.user7, R.drawable.user8,
             R.drawable.user9, R.drawable.user10};
-    ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
 
     //This inflates main_menu.xml
     @Override
@@ -71,10 +70,7 @@ public class ClientList1 extends AppCompatActivity{
     private void populateListView() {
         Cursor cursor = myDb.getAllCustomerData();
 
-        //byte[] test1 = cursor.getBlob(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.PICTURE));
-        //Bitmap test = BitmapFactory.decodeByteArray(test1, 0, test1.length);  //Converting from byte[] to Bitmap
-
-        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME, TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID, TrainerDbSchema.CustomerTable.Cols.DOB_DAY, TrainerDbSchema.CustomerTable.Cols.DOB_MONTH, TrainerDbSchema.CustomerTable.Cols.DOB_YEAR, TrainerDbSchema.CustomerTable.Cols.PICTURE};
+        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME};
         int[] toViewIds = new int[]{R.id.fName_ItemLayout, R.id.lName_ItemLayout};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
@@ -93,6 +89,7 @@ public class ClientList1 extends AppCompatActivity{
                 String dob_m = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_MONTH));
                 String dob_y = cursor.getString(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.DOB_YEAR));
                 byte[] customerImage = cursor.getBlob(cursor.getColumnIndexOrThrow(TrainerDbSchema.CustomerTable.Cols.PICTURE));    //Grabbing byte[] from database
+
                 Intent intent = new Intent(ClientList1.this, CustomerDetails.class);
                 intent.putExtra("unique_id", uniqueID);   //This will make the unique ID available in the next activity
                 intent.putExtra("f_name", firstName);
@@ -117,16 +114,6 @@ public class ClientList1 extends AppCompatActivity{
 
         populateListView();
 
-        c_name = getResources().getStringArray(R.array.customer);
-        userName = getResources().getStringArray(R.array.userName);
-
-        int i = 0;
-        for(String name : c_name)
-        {
-            DataProvider dataProvider = new DataProvider(img_res[i], name, userName[i]);
-            arrayList.add(dataProvider);
-            i++;
-        }
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();

@@ -68,10 +68,6 @@ public class CustomerDetails extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.customer_details);
 
-            profilePic = (ImageView)findViewById(R.id.profilePic);
-            profilePic.setImageResource(R.drawable.user9);
-            //profilePic.setImageBitmap(customerImage2);    //Eventually use this to set the imageView
-
             //Carry over from last activity
             Intent intent = getIntent();
             final String unique_id = intent.getStringExtra("unique_id");
@@ -82,21 +78,17 @@ public class CustomerDetails extends AppCompatActivity {
             final String dob_y = intent.getStringExtra("dob_y");
             final byte[] customerImage = intent.getByteArrayExtra("customerImage"); //image coming from Customer List activity
 
-            customerImage2 = BitmapFactory.decodeByteArray(customerImage, 0, customerImage.length);  //Converting from byte[] to Bitmap
-
             //Database queries from CustomerBaseHelper class
             Cursor cursor = myDb.getAllOrderData(unique_id);
             Cursor cursor1 = myDb.getAllSessionData(unique_id);
 
-            //Values retreived from database
+            //Values retrieved from database
             String address = cursor.getString(1);
-            String added_sessions = cursor.getString(2);
-            String price = cursor.getString(3);
             String phone = cursor.getString(4);
-            String cc_info = cursor.getString(5);
-            String exp_date = cursor.getString(6);
             String totalSessions = cursor1.getString(1);
             String completedSessions = cursor1.getString(2);
+
+            customerImage2 = BitmapFactory.decodeByteArray(customerImage, 0, customerImage.length);  //Converting from byte[] to Bitmap
 
             //Set all activity widgets
             TextView fName = (TextView) findViewById(R.id.fN_customerDetails);
@@ -111,6 +103,8 @@ public class CustomerDetails extends AppCompatActivity {
             tvTotSessions.setText(getResources().getString(R.string.totSessionsMsg01)+ " " + totalSessions);
             TextView tvComSessions = (TextView)findViewById(R.id.tvCompSessions_customerDetails);
             tvComSessions.setText(getResources().getString(R.string.completedMsg01)+ " " + completedSessions);
+            profilePic = (ImageView)findViewById(R.id.profilePic);
+            profilePic.setImageBitmap(customerImage2);
 
             bkButton = (Button)findViewById(R.id.btBack);
             bkButton.setOnClickListener(new View.OnClickListener(){

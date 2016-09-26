@@ -73,7 +73,6 @@ public class CustomerSignature1 extends AppCompatActivity {
         //Initialize myDb
         myDb = new CustomerBaseHelper(this);
 
-
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();

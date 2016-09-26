@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">iTrainer</string>
-
-    <!-- Strings related to login -->
     <string name="prompt_email">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
@@ -79,31 +77,5 @@
     <string name="totSessionsMsg01">Number of Sessions:</string>
     <string name="addSessionsMsg01">How many sessions are you adding?</string>
     <string name="completeSessionMsg01">Is this session completed?</string>
-
-    <string-array name="customer">
-        <item>"John Doe"</item>
-        <item>"Ronald Reagan"</item>
-        <item>"Richard Nixon"</item>
-        <item>"John Kennedy"</item>
-        <item>"Dwight Eisenhower"</item>
-        <item>"Jimmy Carter"</item>
-        <item>"Lyndon Johnson"</item>
-        <item>"Bill Clinton"</item>
-        <item>"Barack Obama"</item>
-        <item>"Papa Bush"</item>
-    </string-array>
-
-    <string-array name="userName">
-        <item>"jdoe1"</item>
-        <item>"rreagan"</item>
-        <item>"rnixon"</item>
-        <item>"jkennedy"</item>
-        <item>"deisenhower"</item>
-        <item>"jcarter"</item>
-        <item>"ljohnson"</item>
-        <item>"bclinton"</item>
-        <item>"bobama"</item>
-        <item>"pbush"</item>
-    </string-array>
 
 </resources>

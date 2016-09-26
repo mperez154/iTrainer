@@ -134,7 +134,6 @@ public class AddCustomer1 extends AppCompatActivity {
             public void onClick(View v){
                 Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (pictureIntent.resolveActivity(getPackageManager()) != null) {
-                    //Uri uri = Uri.
                     startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
             }
@@ -155,6 +154,7 @@ public class AddCustomer1 extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Add if statement that won't allow the startActivity unless a picture was taken
 
 
                 Intent intent = new Intent(AddCustomer1.this, AddSessions1.class);
