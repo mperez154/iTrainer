@@ -75,9 +75,8 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/registerLink"
             android:text="@string/register"
-            android:visibility="invisible"
             android:layout_gravity="center" />
     </LinearLayout>
 

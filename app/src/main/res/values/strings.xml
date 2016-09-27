@@ -10,8 +10,7 @@
     <string name="login_failure">Login Failed</string>
     <string name="login_success">Login Successful, Welcome!</string>
     <string name="register">Register</string>
-    <string name="user_name">jdoe</string>
-    <string name="password">welcome1</string>
+    <string name="user_name">john doe</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="new_customer">New Customer</string>

@@ -54,7 +54,6 @@ public class TrainerDbSchema {
         public final static String NAME = "users";
 
         public final static class Cols {
-            public final static String ID = "id";
             public final static String F_NAME = "F_Name";
             public final static String L_NAME = "L_Name";
             public final static String USER_NAME = "user_name";
