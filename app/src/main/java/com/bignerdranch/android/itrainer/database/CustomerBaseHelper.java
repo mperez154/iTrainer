@@ -107,11 +107,25 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         } else return true;
     }
 
+
+
     //Used to retrieve all data
     public Cursor getAllCustomerData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(CustomerTable.NAME, new String[] {"rowid _id",CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME, CustomerTable.Cols.UNIQUE_ID, CustomerTable.Cols.DOB_DAY, CustomerTable.Cols.DOB_MONTH, CustomerTable.Cols.DOB_YEAR, CustomerTable.Cols.PICTURE},null,null,null,null,null);
         if(cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    //Retrive details for one customer by unique ID
+    public Cursor getOneCustomerData(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = new String[]{CustomerTable.Cols.F_NAME, CustomerTable.Cols.L_NAME, CustomerTable.Cols.DOB_DAY, CustomerTable.Cols.DOB_MONTH, CustomerTable.Cols.DOB_YEAR, CustomerTable.Cols.PICTURE};
+        Cursor cursor = db.query(CustomerTable.NAME, columns, CustomerTable.Cols.UNIQUE_ID + " = '"+name+"' " ,null,null,null,null);
+        if(cursor != null)
+        {
             cursor.moveToFirst();
         }
         return cursor;
@@ -151,6 +165,17 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public boolean updateSessionsCompleted(String sessions){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SessionsTable.Cols.SESSIONS_COMPLETED, sessions);
+
+        long result = db.insert(TrainerDbSchema.SessionsTable.NAME, null, contentValues);
+        if(result == -1){
+            return false;
+        } else return true;
     }
 
 }

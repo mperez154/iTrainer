@@ -3,6 +3,7 @@ package com.bignerdranch.android.itrainer;
 import android.content.Intent;
 import android.gesture.GestureOverlayView;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class CustomerSignature1 extends AppCompatActivity {
     Button btnSubmit;
     TextView sessionSigScreen;
     TextView totalPrice;
+    Bitmap customerImage;
 
     //Create instance of database
     CustomerBaseHelper myDb;
@@ -92,7 +94,12 @@ public class CustomerSignature1 extends AppCompatActivity {
         final String phone_tf = intent.getStringExtra("phone_tf");
         final String cc_tf = intent.getStringExtra("cc_tf");
         final String exp_date_tf = intent.getStringExtra("exp_date_tf");
-        final Bitmap customerImage = (Bitmap)intent.getParcelableExtra("customerImage");
+        customerImage = intent.getParcelableExtra("customerImage");
+
+        if(customerImage == null)
+        {
+            customerImage = BitmapFactory.decodeResource(getResources(), R.drawable.user7);
+        }
 
         final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
 

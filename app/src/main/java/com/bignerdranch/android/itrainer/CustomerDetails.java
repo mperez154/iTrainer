@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
@@ -24,9 +25,11 @@ import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 public class CustomerDetails extends AppCompatActivity {
     ImageView profilePic;
     Button bkButton;
-    Button btAdd;
     Button btCompleteS;
     Bitmap customerImage2;
+    String address;
+    String totalSessions;
+    String completedSessions;
 
     CustomerBaseHelper myDb = new CustomerBaseHelper(this);
 
@@ -83,10 +86,10 @@ public class CustomerDetails extends AppCompatActivity {
             Cursor cursor1 = myDb.getAllSessionData(unique_id);
 
             //Values retrieved from database
-            String address = cursor.getString(1);
+            address = cursor.getString(1);
             String phone = cursor.getString(4);
-            String totalSessions = cursor1.getString(1);
-            String completedSessions = cursor1.getString(2);
+            totalSessions = cursor1.getString(1);
+            completedSessions = cursor1.getString(2);
 
             customerImage2 = BitmapFactory.decodeByteArray(customerImage, 0, customerImage.length);  //Converting from byte[] to Bitmap
 
@@ -115,16 +118,6 @@ public class CustomerDetails extends AppCompatActivity {
                 }
             });
 
-            btAdd = (Button)findViewById(R.id.add_button);
-            btAdd.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    FragmentManager manager = getSupportFragmentManager();
-                    AddSessionsFragment dialog = new AddSessionsFragment();
-                    dialog.show(manager, "Sessions to Add");
-                }
-            });
-
             btCompleteS = (Button)findViewById(R.id.btCompleteSession);
             btCompleteS.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -132,6 +125,26 @@ public class CustomerDetails extends AppCompatActivity {
                     FragmentManager manager = getSupportFragmentManager();
                     CompleteSessionsFragment dialog = new CompleteSessionsFragment();
                     dialog.show(manager, "Session Complete");
+
+                    /*Cursor cursor = myDb.getAllSessionData(unique_id);
+
+                    completedSessions = cursor.getString(2);
+                    int intCompletedSessions = Integer.parseInt(completedSessions);
+
+                    intCompletedSessions = intCompletedSessions - 1;
+                    completedSessions = String.valueOf(intCompletedSessions);
+
+
+
+                    boolean isInserted = myDb.updateSessionsCompleted(completedSessions);
+                    if(isInserted)
+                    {
+                        Toast.makeText(CustomerDetails.this, "UPDATE SUCCESSFUL", Toast.LENGTH_LONG).show();
+                    }
+                    else  Toast.makeText(CustomerDetails.this, "FAILED TO ADD CUSTOMER", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(CustomerDetails.this, CustomerDetails.class);
+                    startActivity(intent);*/
 
                 }
             });

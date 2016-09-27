@@ -51,7 +51,7 @@ public class Register extends AppCompatActivity {
                 boolean isInserted = myDb.insertUser(f_name, l_name, user_name, password);
                 if(isInserted)
                 {
-                    //Doe nothing
+                    Toast.makeText(Register.this, "USER CREATED", Toast.LENGTH_SHORT).show();
                 }
                 else  Toast.makeText(Register.this, "FAILED TO ADD USER", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Register.this, LoginActivity.class);

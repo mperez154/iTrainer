@@ -1,6 +1,7 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
+
 import java.text.NumberFormat;
 
 /**
@@ -26,7 +29,7 @@ public class PaymentScreen1 extends AppCompatActivity {
     Button btnContinue;
     TextView paymentHeader;
     ImageView customerPicture;
-
+    String num_sessions;
 
     //This inflates main_menu.xml
     @Override
@@ -102,7 +105,7 @@ public class PaymentScreen1 extends AppCompatActivity {
         final String dob_d = intent.getStringExtra("dob_d");
         final String dob_m = intent.getStringExtra("dob_m");
         final String dob_y = intent.getStringExtra("dob_y");
-        final String num_sessions = intent.getStringExtra("num_sessions");  //Used to set new_session_count below
+        num_sessions = intent.getStringExtra("num_sessions");  //Used to set new_session_count below
         final Bitmap customerImage = (Bitmap)intent.getParcelableExtra("customerImage");
 
         if(unique_id_back !=  null)

@@ -4,15 +4,9 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">Password cannot be blank</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="login_failure">Login Failed</string>
-    <string name="login_success">Login Successful, Welcome!</string>
     <string name="register">Register</string>
-    <string name="user_name">john doe</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="new_customer">New Customer</string>
     <string name="first_name">First Name</string>
     <string name="first_name_hint">Enter first name...</string>

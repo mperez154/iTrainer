@@ -103,25 +103,17 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:layout_gravity="bottom">
+            android:gravity="bottom|center_horizontal"
+            android:layout_gravity="bottom|center_horizontal">
             <Button
                 android:text="BACK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btBack"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
                 android:layout_gravity="bottom"
             />
-            <Button
-                android:text="ADD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/add_button"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:layout_gravity="bottom"/>
+
         </LinearLayout>
     </LinearLayout>
 
