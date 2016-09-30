@@ -122,29 +122,42 @@ public class CustomerDetails extends AppCompatActivity {
             btCompleteS.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    FragmentManager manager = getSupportFragmentManager();
-                    CompleteSessionsFragment dialog = new CompleteSessionsFragment();
-                    dialog.show(manager, "Session Complete");
 
-                    /*Cursor cursor = myDb.getAllSessionData(unique_id);
+                    Cursor cursor = myDb.getAllSessionData(unique_id);
 
                     completedSessions = cursor.getString(2);
                     int intCompletedSessions = Integer.parseInt(completedSessions);
 
-                    intCompletedSessions = intCompletedSessions - 1;
-                    completedSessions = String.valueOf(intCompletedSessions);
+                    totalSessions = cursor.getString(1);
+                    int intTotalSessions = Integer.parseInt(totalSessions);
 
-
-
-                    boolean isInserted = myDb.updateSessionsCompleted(completedSessions);
-                    if(isInserted)
+                    if(intCompletedSessions == intTotalSessions)
                     {
-                        Toast.makeText(CustomerDetails.this, "UPDATE SUCCESSFUL", Toast.LENGTH_LONG).show();
+                        //Error message, "no more sessions left"
+                        //Do not update database
+                        Toast.makeText(CustomerDetails.this, "No more available sessions", Toast.LENGTH_LONG).show();
                     }
-                    else  Toast.makeText(CustomerDetails.this, "FAILED TO ADD CUSTOMER", Toast.LENGTH_LONG).show();
+                    else if(intCompletedSessions == (intTotalSessions - 1))
+                    {
+                        //Message "Last session"
+                        //Update DB
+                        Toast.makeText(CustomerDetails.this, "This is the last session", Toast.LENGTH_LONG).show();
+                        intCompletedSessions = intCompletedSessions + 1;
+                        completedSessions = String.valueOf(intCompletedSessions);
 
-                    Intent intent = new Intent(CustomerDetails.this, CustomerDetails.class);
-                    startActivity(intent);*/
+                        myDb.updateSessionsCompleted(completedSessions, unique_id);
+
+                        startActivity(getIntent());
+                    }
+                    else
+                    {
+                        intCompletedSessions = intCompletedSessions + 1;
+                        completedSessions = String.valueOf(intCompletedSessions);
+
+                        myDb.updateSessionsCompleted(completedSessions, unique_id);
+
+                        startActivity(getIntent());
+                    }
 
                 }
             });

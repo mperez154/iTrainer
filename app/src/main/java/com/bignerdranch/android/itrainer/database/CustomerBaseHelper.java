@@ -167,15 +167,18 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean updateSessionsCompleted(String sessions){
+    //Update completed sessions
+    public void updateSessionsCompleted(String sessions, String uniqueID){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(SessionsTable.Cols.SESSIONS_COMPLETED, sessions);
 
-        long result = db.insert(TrainerDbSchema.SessionsTable.NAME, null, contentValues);
-        if(result == -1){
-            return false;
-        } else return true;
+        String selection = SessionsTable.Cols.UNIQUE_ID + " LIKE ?";
+        String[] selectionArgs = {String.valueOf(uniqueID)};
+
+        int count = db.update(SessionsTable.NAME, contentValues, selection, selectionArgs);
+
+
     }
 
 }
