@@ -4,19 +4,24 @@ import android.content.Intent;
 import android.gesture.GestureOverlayView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
-
 import java.io.ByteArrayOutputStream;
 import java.text.NumberFormat;
 
@@ -24,12 +29,17 @@ import java.text.NumberFormat;
  * Created by mperez5 on 9/5/2016.
  */
 public class CustomerSignature1 extends AppCompatActivity {
+
+    ImageView imageView;
+    GestureOverlayView mGestureOverlayView;
+
     Button btnCancel;
     Button btnBack;
     Button btnSubmit;
     TextView sessionSigScreen;
     TextView totalPrice;
     Bitmap customerImage;
+
 
     //Create instance of database
     CustomerBaseHelper myDb;
@@ -75,6 +85,20 @@ public class CustomerSignature1 extends AppCompatActivity {
         //Initialize myDb
         myDb = new CustomerBaseHelper(this);
 
+        imageView = (ImageView)findViewById(R.id.imageView1);
+        mGestureOverlayView = (GestureOverlayView)findViewById(R.id.signature_box);
+
+        Button save = (Button)findViewById(R.id.saveSig);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGestureOverlayView.setDrawingCacheEnabled(true);
+                Bitmap b = Bitmap.createBitmap(mGestureOverlayView.getDrawingCache());
+                imageView.setImageBitmap(b);
+                mGestureOverlayView.setDrawingCacheEnabled(false);
+            }
+        });
+
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
@@ -102,6 +126,8 @@ public class CustomerSignature1 extends AppCompatActivity {
         }
 
         final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
+
+
 
         sessionSigScreen = (TextView)findViewById(R.id.sessions_sig_screen);
         sessionSigScreen.setText((getResources().getString(R.string.signature_screen_sessions) + " " + new_session_count + ", "));
@@ -195,5 +221,12 @@ public class CustomerSignature1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        return super.onTouchEvent(event);
     }
 }

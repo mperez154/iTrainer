@@ -1,12 +1,12 @@
 package com.bignerdranch.android.itrainer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,7 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 import com.bignerdranch.android.itrainer.database.TrainerDbSchema;
@@ -30,9 +33,6 @@ public class ClientList1 extends AppCompatActivity{
     CustomerBaseHelper myDb;
 
     Button btnNewCustomer;
-    int[] img_res = {R.drawable.user1,R.drawable.user2, R.drawable.user3, R.drawable.user4,
-            R.drawable.user5, R.drawable.user6, R.drawable.user7, R.drawable.user8,
-            R.drawable.user9, R.drawable.user10};
 
     //This inflates main_menu.xml
     @Override
@@ -67,11 +67,15 @@ public class ClientList1 extends AppCompatActivity{
         return true;
     }
 
-    private void populateListView() {
+   private void populateListView() {
         Cursor cursor = myDb.getAllCustomerData();
 
-        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME};
-        int[] toViewIds = new int[]{R.id.fName_ItemLayout, R.id.lName_ItemLayout};
+        //Allow activity to manage lifetime
+        //DEPRICATED!
+        startManagingCursor(cursor);
+
+        String[] fromFieldNames = new String[]{TrainerDbSchema.CustomerTable.Cols.F_NAME, TrainerDbSchema.CustomerTable.Cols.L_NAME, TrainerDbSchema.CustomerTable.Cols.UNIQUE_ID};
+        int[] toViewIds = new int[]{R.id.fName_ItemLayout, R.id.lName_ItemLayout, R.id.img1};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames, toViewIds, 0);
         ListView myList = (ListView) findViewById(R.id.listViewCustomers);
@@ -103,6 +107,8 @@ public class ClientList1 extends AppCompatActivity{
             }
         });
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

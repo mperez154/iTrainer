@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="fill_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
@@ -13,13 +13,24 @@
         android:id="@+id/user_login_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <android.gesture.GestureOverlayView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:background="#FFFFFF"
+        android:id="@+id/imageView1"/>
+
+    <android.gesture.GestureOverlayView
         android:id="@+id/signature_box"
-        android:backgroundTint="@color/abc_color_highlight_material"
-    >
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#FFFFFF"
+        android:fadeEnabled="false"
+        android:gestureStrokeType="multiple"
+        android:gestureStrokeWidth="1.5"
+        android:gestureColor="#000000"
+        android:fadeOffset="600000"
+        android:eventsInterceptionEnabled="false"
+        android:alwaysDrawnWithCache="true"    >
     </android.gesture.GestureOverlayView>
 
     <LinearLayout
@@ -65,6 +76,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_gravity="right"
             android:gravity="bottom|right">
+            <Button
+                android:text="SAVE PIC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/saveSig"
+                android:layout_weight="1"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -119,6 +119,8 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+
+
     //Retrive details for one customer by unique ID
     public Cursor getOneCustomerData(String name){
         SQLiteDatabase db = this.getWritableDatabase();
