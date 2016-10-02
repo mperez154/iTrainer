@@ -12,7 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Date;
 
@@ -23,7 +25,7 @@ public class AddCustomer1 extends AppCompatActivity {
     Button btnCancel;
     Button btnNext;
     Long uniqueID = (new Date().getTime())/10000;    //Get the current time() and divides by 100,000 to create 8 digit unique ID
-    Button btPicture;
+    ImageButton btPicture;
     ImageView ivCustomerPic;
     Bitmap customerImage;
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -97,7 +99,7 @@ public class AddCustomer1 extends AppCompatActivity {
         final EditText dob_d = (EditText)findViewById(R.id.dob_d_tf);
         final EditText dob_m = (EditText)findViewById(R.id.dob_m_tf);
         final EditText dob_y = (EditText)findViewById(R.id.dob_y_tf);
-        final EditText unique_id = (EditText)findViewById(R.id.unique_id_tf);
+        final TextView unique_id = (TextView) findViewById(R.id.unique_id_tf);
         ivCustomerPic = (ImageView)findViewById(R.id.customerPicture);
 
         //If Customer Image is not empty, populate ImageView ivCustomerPic (Customer Image is populated from onActivityResult from Camera intent
@@ -128,7 +130,7 @@ public class AddCustomer1 extends AppCompatActivity {
 
 
 
-        btPicture = (Button)findViewById(R.id.btPic);
+        btPicture = (ImageButton)findViewById(R.id.btPic);
         btPicture.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

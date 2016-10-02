@@ -7,7 +7,7 @@
 <LinearLayout
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:gravity="top">
 
     <FrameLayout
@@ -32,10 +32,12 @@
     >
 
         <ImageView
-            android:layout_width="160dp"
+            android:layout_width="0dp"
             android:layout_height="200dp"
             app:srcCompat="@drawable/user2"
             android:id="@+id/customerPicture"
+            android:contentDescription="@string/customerImage"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -71,6 +73,7 @@
                 <EditText
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
+                    android:hint="@string/month"
                     android:ems="2"
                     android:id="@+id/dob_m_tf"
                     android:layout_marginRight="2dp"/>
@@ -78,10 +81,11 @@
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="/"/>
+                    android:text="@string/forwardSlash"/>
                 <EditText
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
+                    android:hint="@string/day"
                     android:ems="2"
                     android:id="@+id/dob_d_tf"
                     android:layout_marginRight="2dp"/>
@@ -89,10 +93,11 @@
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="/"/>
+                    android:text="@string/forwardSlash"/>
                 <EditText
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
+                    android:hint="@string/year"
                     android:ems="4"
                     android:id="@+id/dob_y_tf"
                     android:layout_marginRight="2dp"/>
@@ -105,10 +110,12 @@
                 android:id="@+id/unique_id_label"
                 android:layout_margin="10dp" />
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/unique_id_tf"
+                android:textSize="15sp"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="bottom" />
         </LinearLayout>
@@ -121,13 +128,17 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal">
-        <Button
-            android:text="Picture"
+        <ImageButton
+            android:text="@string/picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/camera1"
+            android:layout_marginLeft="5dp"
             android:id="@+id/btPic"
+            android:contentDescription="@string/picture"
             android:layout_weight="1"/>
         <Button
             android:layout_width="wrap_content"
@@ -135,18 +146,20 @@
             android:text="@string/cancel"
             android:layout_gravity="bottom|center_horizontal"
             android:id="@+id/btnCancel_new_customer"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="5dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/next_button"
             android:id="@+id/next_button"
+            android:layout_weight="2"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
     </LinearLayout>
 
 </LinearLayout>
