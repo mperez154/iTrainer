@@ -104,7 +104,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:id="@+id/receipt_copy_of_signature"/>
+        android:id="@+id/copy_of_signature"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

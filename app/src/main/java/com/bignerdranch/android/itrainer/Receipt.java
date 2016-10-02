@@ -2,6 +2,8 @@ package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
 import android.gesture.GestureOverlayView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class Receipt extends AppCompatActivity {
     TextView customerAddress;
     TextView numSessions;
     TextView price;
+    ImageView signature;
 
     //This inflates main_menu.xml
     @Override
@@ -86,7 +90,9 @@ public class Receipt extends AppCompatActivity {
         final String phone_tf = intent.getStringExtra("phone_tf");
         final String cc_tf = intent.getStringExtra("cc_tf");
         final String exp_date_tf = intent.getStringExtra("exp_date_tf");
-        final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
+        final byte[] signature1 = intent.getByteArrayExtra("signature1");
+
+        Bitmap customerImage2 = BitmapFactory.decodeByteArray(signature1, 0, signature1.length);  //Converting from byte[] to Bitmap
 
         customerName = (TextView)findViewById(R.id.receipt_name);
         customerName.setText(getResources().getString(R.string.receipt_name) + " " + f_name + " " + l_name);
@@ -100,6 +106,9 @@ public class Receipt extends AppCompatActivity {
         price = (TextView)findViewById(R.id.receipt_price);
         String finalPrice2 = NumberFormat.getCurrencyInstance().format(finalPrice); //Format the double so that it looks like currence (i.e. two decimal places)
         price.setText(getResources().getString(R.string.total_price_sig_screen) + " " + finalPrice2);
+
+        signature = (ImageView)findViewById(R.id.copy_of_signature);
+        signature.setImageBitmap(customerImage2);
 
         btnPrint = (Button)findViewById(R.id.btnPrint);
         btnPrint.setOnClickListener(new View.OnClickListener(){

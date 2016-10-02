@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.gesture.GestureOverlayView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +14,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
@@ -32,14 +27,14 @@ public class CustomerSignature1 extends AppCompatActivity {
 
     ImageView imageView;
     GestureOverlayView mGestureOverlayView;
-
     Button btnCancel;
     Button btnBack;
     Button btnSubmit;
+    Button save;
     TextView sessionSigScreen;
     TextView totalPrice;
     Bitmap customerImage;
-
+    Bitmap signatureImage;
 
     //Create instance of database
     CustomerBaseHelper myDb;
@@ -88,17 +83,6 @@ public class CustomerSignature1 extends AppCompatActivity {
         imageView = (ImageView)findViewById(R.id.imageView1);
         mGestureOverlayView = (GestureOverlayView)findViewById(R.id.signature_box);
 
-        Button save = (Button)findViewById(R.id.saveSig);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mGestureOverlayView.setDrawingCacheEnabled(true);
-                Bitmap b = Bitmap.createBitmap(mGestureOverlayView.getDrawingCache());
-                imageView.setImageBitmap(b);
-                mGestureOverlayView.setDrawingCacheEnabled(false);
-            }
-        });
-
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
                 .commit();
@@ -124,10 +108,6 @@ public class CustomerSignature1 extends AppCompatActivity {
         {
             customerImage = BitmapFactory.decodeResource(getResources(), R.drawable.user7);
         }
-
-        final GestureOverlayView signature = (GestureOverlayView)findViewById(R.id.signature_box);
-
-
 
         sessionSigScreen = (TextView)findViewById(R.id.sessions_sig_screen);
         sessionSigScreen.setText((getResources().getString(R.string.signature_screen_sessions) + " " + new_session_count + ", "));
@@ -173,10 +153,20 @@ public class CustomerSignature1 extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
+                mGestureOverlayView.setDrawingCacheEnabled(true);
+                signatureImage = Bitmap.createBitmap(mGestureOverlayView.getDrawingCache());
+                imageView.setImageBitmap(signatureImage);
+                mGestureOverlayView.setDrawingCacheEnabled(false);
 
+                //Compress customer image
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 customerImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
                 byte[] photo = baos.toByteArray();
+
+                //compress customer signature
+                ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+                signatureImage.compress(Bitmap.CompressFormat.PNG, 50, baos2);
+                byte[] signature1 = baos2.toByteArray();
 
 
                 boolean isInserted = myDb.insertCustomerData(f_name, l_name, dob_y, dob_m, dob_d, unique_id, photo);
@@ -217,7 +207,7 @@ public class CustomerSignature1 extends AppCompatActivity {
                 intent.putExtra("phone_tf", phone_tf);
                 intent.putExtra("cc_tf", cc_tf);
                 intent.putExtra("exp_date_tf", exp_date_tf);
-                intent.putExtra("signature", signature.getGesture());
+                intent.putExtra("signature1", signature1);
                 startActivity(intent);
             }
         });
