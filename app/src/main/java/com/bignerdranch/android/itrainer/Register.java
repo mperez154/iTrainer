@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.bignerdranch.android.itrainer.database.CustomerBaseHelper;
 
 /**
@@ -61,6 +60,5 @@ public class Register extends AppCompatActivity {
         });
 
     }
-
 
 }

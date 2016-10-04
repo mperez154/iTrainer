@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 public class LoggedInFragment extends Fragment {
 
     View rootView;
@@ -23,7 +22,12 @@ public class LoggedInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_logged_in, container, false);
+
+
+
         return rootView;
     }
+
+
 
 }

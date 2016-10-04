@@ -48,7 +48,7 @@
     <string name="num_sessions">Number of Sessions:</string>
     <string name="print_button">Print</string>
     <string name="email_button">eMail</string>
-    <string name="logged_in_note">Logged In:</string>
+    <string name="logged_in_note">Logged In: jdoe</string>
     <string name="logOff_Msg01">Logging You Off</string>
     <string name="settings_Msg01">Settings</string>
     <string name="about_Msg01">About Us</string>

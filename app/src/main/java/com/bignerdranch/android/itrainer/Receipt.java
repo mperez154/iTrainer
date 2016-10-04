@@ -1,7 +1,6 @@
 package com.bignerdranch.android.itrainer;
 
 import android.content.Intent;
-import android.gesture.GestureOverlayView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -18,8 +17,6 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 
-import static java.net.Proxy.Type.HTTP;
-
 /**
  * Created by Marco on 9/4/2016.
  */
@@ -32,6 +29,8 @@ public class Receipt extends AppCompatActivity {
     TextView numSessions;
     TextView price;
     ImageView signature;
+
+
 
     //This inflates main_menu.xml
     @Override
@@ -70,6 +69,8 @@ public class Receipt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.receipt);
+
+
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.user_login_info, LoggedInFragment.newInstance())
